@@ -1,0 +1,45 @@
+44
+bodyguard: ve si
+judge: quan toa
+lawyer: luat su noi chung
+barrister: luat su bao chua
+magistrate: quan toa so tham
+solicitor: co van phap luat
+policewoman: canh sat
+detective: tham tu
+programmer: lap trinh vien
+accountant: ke toan
+economist: nha kinh te hoc
+businessman: doanh nhan
+doctor: bac si
+paramedi: tro ly y te
+psychiatrist: nha tam than hoc
+dentist: nha si
+physiotherapist: nha tri lieu vat ly
+nurse: y ta
+pharmacist: duoc si
+baker: tho lam banh
+bookmaker: nha cai
+beautician: nhan vien lam dep
+bookkeeper: ke toan
+florist: nguoi trong hoa
+cashier: thu ngan
+shopkeeper: chu cua hang
+tailor: tho may
+biologist: nha sinh vat hoc
+scientist: nha khoa hoc
+chemist: nha hoa hoc
+physicist: nha vat ly
+meteorologist: nha khi tuong hoc
+botanist: nha thuc vat hoc
+researcher: nguoi lam nghien cuu
+diplomat: nha ngoai giao
+receptionist: le tan
+telephonist: nhan vien truc dien thoai
+manager: quan ly
+secretary: thu ky
+cook: dau bep
+chef: dau bep chinh
+bartender: nhan vien phuc vu quay bar
+bouncer: bao ve
+waitress: boi ban

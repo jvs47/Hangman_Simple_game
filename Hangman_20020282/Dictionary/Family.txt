@@ -1,0 +1,35 @@
+34
+grandparents: ong ba
+grandfather: ong ngoai/ ong noi
+grandmother: ba ngoai/ ba noi
+aunt: co/ di
+uncle: cau/ chu
+cousin: anh chi em ho
+father-in-law: bo chong/ vo
+mother-in-law: me chong/ vo
+sister-in-law: chi dau / em dau
+brother-in-law: anh re, em re
+parents: ba me
+stepparent: cha me ke
+mother: me
+father: bo
+sibling: anh chi em ruot
+spouse: vo chong
+husband: chong
+wife: vo
+child: con cai
+daughter: con gai
+son: con trai
+stepfather: cha duong
+stepmother: me ke
+ex-husband: chong cu
+ex-wife: vo cu
+half-brother: anh/em trai cung cha/me khac me/cha
+step brother: con trai rieng cua bo/me ke
+half-sister: chi/em gai cung cha/me khac me/cha
+step sister: con gai rieng cua bo me ke
+grandchildren: cac chau (cua ong ba)
+granddaughter: chau gai (cua ong ba)
+grandson: chau trai (cua ong ba)
+nephew: chau trai ( cua co/ di/ chu …)
+niece: chau gai ( cua co/ di/ chu …)

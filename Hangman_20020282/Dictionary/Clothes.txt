@@ -1,0 +1,49 @@
+48
+sneaker: giay the thao
+sandals: dep xang dan
+boots: bot
+loafer: giay luoi
+clog: guoc
+stilettos: giay got nhon
+slippers: dep di trong nha
+hat: mu
+beret: mu noi
+fedora: mu phot mem
+snapback: mu luoi trai phang
+jeans: quan bo
+miniskirt: vay ngan
+dress: vay lien
+trousers: quan dai
+shorts: quan sooc
+blouse: ao so mi nu
+shirt: ao so mi
+bikini: bikini
+shirt: ao phong
+pullover: ao len chui dau
+jumper: ao len
+suit: bo com le
+jacket: ao khoac ngan
+anorak: ao khoac co mu
+overcoat: ao mang to
+miniskirt: vay ngan
+pyjamas: do ngu
+raincoat: ao mua
+nightie: vay ngu
+tights: quan tat
+tracksuitu: do the thao
+bracelet: vong tay
+earrings: khuyen tai
+glasses: kinh
+handbag: tui
+piercing: khuyen
+necklace: vong co
+purse: vi nu
+sunglasses: kinh ram
+ring: nhan
+watch: dong ho
+size: kich co
+tight: chat
+loose: long
+zip: khoa keo
+button: khuy
+pocket: tui quan a

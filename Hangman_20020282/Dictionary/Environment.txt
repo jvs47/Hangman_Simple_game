@@ -1,0 +1,28 @@
+27
+acid rain: mua axit
+air: khong khi
+atmosphare: khi quyen
+biodiversity: da dang sinh hoc
+climate: khi hau
+climate change: bien doi khi hau
+deforestation: o nhiem khong khi
+destruction: su pha huy
+disposal: su vut bo
+draught: han han
+dust: bui ban
+ecosystem: he sinh thai
+fertilizer: phan bon
+greenhouse: nha kinh
+groundwater: nuoc ngam
+jungle: rung nhiet doi
+meadow: dong co
+pesticide: thuoc tru sau
+poaching: nan san ban trom
+pollution: o nhiem
+pollutant: chat gay o nhiem
+preservation: su bao ton
+protection: bao ve
+protection forest: rung phong ho
+purity: trong lanh, tinh khiet thanh loc
+rainforest: rung nhiet doi
+sewage: : nuoc thai

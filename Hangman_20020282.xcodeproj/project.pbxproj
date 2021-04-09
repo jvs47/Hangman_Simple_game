@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2DA99A4326201E0300027B34 /* Dictionary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dictionary; sourceTree = "<group>"; };
 		2DF74621261B59CC00E2A4C8 /* Hangman_20020282 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Hangman_20020282; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF74624261B59CC00E2A4C8 /* hangman.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hangman.cpp; sourceTree = "<group>"; };
 		2DF7462D261B660700E2A4C8 /* draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		2DF74623261B59CC00E2A4C8 /* Hangman_20020282 */ = {
 			isa = PBXGroup;
 			children = (
+				2DA99A4326201E0300027B34 /* Dictionary */,
 				2DF74624261B59CC00E2A4C8 /* hangman.cpp */,
 				2DF74631261B673300E2A4C8 /* utility.cpp */,
 				2DF74632261B673300E2A4C8 /* utility.hpp */,

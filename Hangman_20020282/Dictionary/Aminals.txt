@@ -1,0 +1,61 @@
+60
+dog: con cho
+cat: con meo
+chick: con ga con
+turkey: ga tay
+camel: con lac da
+bull: con bo duc
+cow: con bo cai
+calf: con be
+fox: con cao
+lion: con su tu
+bear: con gau
+elephant: con voi
+squirrel: con soc
+porcupine: con nhim
+hippopotamus: con ha ma
+raccoon: con gau meo
+giraffe: con huou cao co
+rhinoceros: con te giac
+jaguar: con bao dom
+chimpanzee: con hac tinh tinh
+donkey: con lua
+zebra: con ngua van
+panda: con gau truc
+squirrel: con soc
+kangaroo: con chuot tui
+hedgehog: con nhim
+wolf: con cho soi
+alligator: con ca sau
+bat: con doi
+boar: con lon hoang
+beaver: con hai ly
+buffalo: con trau nuoc
+porcupine: con nhim
+ladybug: con bo rua
+grasshopper: con chau chau
+cockroach: con gian
+honeycomb: sap ong
+parasites: ky sinh trung
+caterpillar: sau buom
+mosquito: con muoi
+tarantula: con nhen lon
+frog: con ech
+crocodile: con ca sau
+lizard: con than lan
+chameleon: con tac ke hoa
+dinosaurs: con khung long
+toad: con coc
+cobra: con ran ho mang
+turtle: con rua
+seal: con hai cau
+penguin: con chim canh cut
+squid: con muc
+stingray: ca duoi
+jellyfish: con sua
+swordfish: con ca kiem
+starfish: con sao bien
+crab: con cua
+seahorse: con ca ngua
+octopus: bach tuoc
+turtle: con rua

@@ -1,0 +1,45 @@
+44
+business: kinh doanh
+customer: khach hang
+sale: ban hang
+launch: tung ra san pham
+transaction: giao dich
+cooperation: hop tac
+bargain: mac ca
+compensate: den bu, boi thuong
+claim: yeu cau boi thuong, khieu nai
+concession: nhuong bo
+conspiracy: am muu
+indecisive: luong lu
+proposal: de xuat
+settle: thanh toan
+withdraw: rut tien
+transfer: chuyen khoan
+turnover: doanh so, doanh thu
+tax: thue
+stock: von
+deposit: tien gui, dat coc
+statement: sao ke tai khoan
+establish: thanh lap
+merge: sat nhap
+commission: tien hoa hong
+subsidise: phu cap
+fund: quy
+debt: khoan no
+company: cong ty
+enterprise: to chuc kinh doanh, xi nghiep, hang
+corporation: tap doan
+subsidiary: cong ty con
+affiliate: cong ty lien ket
+partnership: cong ty hop doanh
+director: giam doc
+manager: quan ly
+founder: nguoi sang lap
+supervisor: nguoi giam sat
+representative: nguoi dai dien
+employee: nhan vien/nguoi lao dong
+employer: nguoi su dung lao dong
+trainee: nguoi duoc dao tao
+trainer: nguoi dao tao
+employee: nhan vien/nguoi lao dong
+employer: nguoi su dung lao dong
