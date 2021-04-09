@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
         int badGuessCount = 0;
         const int MAX_BAD_GUESS = 7;
         string badGuess;
-
+        
         do {
             renderGame(guessedWord, badGuessCount, badGuess);
             char guess = readAGuess();
@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
         } while (badGuessCount < MAX_BAD_GUESS && guessedWord != word);
 
         printGameOverInfo(guessedWord, word, badGuessCount);
-        cout << "Do you want more (Y/N) ?";
+        cout << "\nDo you want more (Y/N) ?";
         string answer;
         cin.ignore(1);
         getline(cin, answer);

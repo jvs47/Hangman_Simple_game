@@ -1,0 +1,36 @@
+35
+city: thanh pho
+sidewalk: via he
+intersection: giao lo
+avenue: dai lo
+roundabout: vong xoay
+apartment house: chung cu
+bus stop: diem dung xe bus
+downtown: trung tam thanh pho
+shopping mall: trung tam thuong mai
+tower: thap
+industrial zone: khu cong nghiep
+residential area: khu dan cu
+square: quang truong
+exhaust fumes: khi thai, khoi bui
+tunnel: duong ham
+subway station: tram xe dien ngam
+office building: toa nha van phong
+signpost: cot bien bao
+street sign: chi dan duong
+lane: lan duong
+dotted line: vach phan cach
+parking lot: bai do xe
+taxi rank: bai do taxi
+amenities: tien nghi
+lure: thu hut/ cam do
+stress: ap luc,cang thang
+hustle and bustle: hoi ha va nhon nhip
+vibrant: soi dong/ ruc ro
+ninghtlife: cuoc song ve dem
+traffic jam: un tat giao thong
+litter: xa rac
+pollution: o nhiem
+social’s vices: te nan xa hoi
+noise: tieng on
+overload: qua tai

@@ -23,18 +23,20 @@ string chooseWord(const string& fileName)
 {
     vector<string> vocabulary;
     ifstream file(fileName);
+    //file.open(fileName);
     if (!file.is_open())
         return "";
-
+    
     while (!file.eof()) {
         string line;
         getline(file, line);
         if (file && !line.empty())
             vocabulary.push_back(normalize(line));
     }
-
+    
     unsigned long n = vocabulary.size();
     cout << "vocabulary size = " << n << endl;
+    file.close();
     return n > 0 ? vocabulary[rand() % n] : "";
 }
 

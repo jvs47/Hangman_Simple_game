@@ -14,7 +14,7 @@
 using namespace std;
 
 
-string getHangPicture(int badGuessCount)
+string getHangPicture(int &badGuessCount)
 {
     string picture[] = {"",
 "   ------------\n"
@@ -94,11 +94,8 @@ string getHangPicture(int badGuessCount)
 
 void clearScreen()
 {
-#ifdef _WIN32
-    system("cls");
-#elif __linux__
+
     system("clear");
-#endif // _WIN32
 }
 
 void renderGame(string &guessedWord, int &badGuessCount, string badGuess = "")
@@ -157,14 +154,15 @@ void printGameOverInfo(string &guessedWord, string &word, int &badGuessCount)
 {
     renderGame(guessedWord, badGuessCount);
     if (guessedWord != word) {
-        int n = 0;
-        while (true) {
+        int n = 0, i= 0;
+        while (i<10) {
             clearScreen();
             cout << "Game Over!!! You are hanged" << endl
                  << "The correct word is " << word << endl;
             cout << HANGED[n];
             n = (n+1) % HANGED.size();
             std::this_thread::sleep_for (std::chrono::milliseconds(500));
+            i++;
         }
 
     } else {
