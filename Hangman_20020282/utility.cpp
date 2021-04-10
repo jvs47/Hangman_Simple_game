@@ -40,7 +40,7 @@ string chooseWord(const string& fileName)
     return n > 0 ? vocabulary[rand() % n] : "";
 }
 
-bool contains(string word, char guess)
+bool contains(string &word, char &guess)
 {
     return (word.find(guess) != string::npos);
 }

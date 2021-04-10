@@ -32,7 +32,6 @@
 		2DF7462E261B660700E2A4C8 /* draw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
 		2DF74631261B673300E2A4C8 /* utility.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		2DF74632261B673300E2A4C8 /* utility.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
-		2DF74635261B680600E2A4C8 /* ogden_picturable_200.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ogden_picturable_200.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +68,6 @@
 				2DF74624261B59CC00E2A4C8 /* hangman.cpp */,
 				2DF74631261B673300E2A4C8 /* utility.cpp */,
 				2DF74632261B673300E2A4C8 /* utility.hpp */,
-				2DF74635261B680600E2A4C8 /* ogden_picturable_200.txt */,
 				2DF7462D261B660700E2A4C8 /* draw.cpp */,
 				2DF7462E261B660700E2A4C8 /* draw.hpp */,
 			);

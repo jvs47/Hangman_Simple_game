@@ -14,6 +14,6 @@
 
 std::string normalize(const std::string& s);
 std::string chooseWord(const std::string& fileName);
-bool contains(std::string word, char guess);
+bool contains(std::string &word, char &guess);
 
 #endif /* utility_hpp */
