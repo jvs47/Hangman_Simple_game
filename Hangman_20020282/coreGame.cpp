@@ -38,7 +38,7 @@ void coreGame::startGame() {
     for (unsigned int i = 0; i < word.length(); i++)
         if (word[i] == ' ')
             guessedWord[i] = ' ';
-    updateSuggest();
+    updateHint();
 }
 
 void coreGame::chooseCategory() {
@@ -211,7 +211,7 @@ void coreGame::guessEvent() {
             else if (keyName == "Space")
                 guessChar = '$';
             else if (keyName.length() == 1 && keyName[0] >= 'A' && keyName[0] <= 'Z')
-                guessChar = keyName[0];
+                guessChar = keyName[0]+32;
         }
     }
 }
@@ -219,12 +219,12 @@ void coreGame::guessEvent() {
 void coreGame::handleGuess() {
     if (guessChar == ' ') return;
     if (guessChar == '$')
-        getSuggest();
+        hint();
     else if (contains(guessedStr, guessChar))
         return;
     else if (contains(word, guessChar)) {
         updateGuessedWord();
-        updateSuggest();
+        updateHint();
     } else if (!contains(badGuess, guessChar)) {
         badGuessed();
         renderPlane(guessChar, 0);
@@ -268,7 +268,7 @@ void coreGame::updateGuessedWord() {
     renderPlane(guessChar, numOfChar);
 }
 
-void coreGame::updateSuggest() {
+void coreGame::updateHint() {
     if (suggested < maxSuggest) {
         unsigned long suggest = 0;
         unsigned long n = guessedWord.length();
@@ -282,7 +282,7 @@ void coreGame::updateSuggest() {
     if (suggested > maxSuggest) maxSuggest = suggested;
 }
 
-void coreGame::getSuggest() {
+void coreGame::hint() {
     if (suggested < maxSuggest) {
         suggested++;
         while (true) {

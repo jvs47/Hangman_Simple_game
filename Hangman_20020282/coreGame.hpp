@@ -17,6 +17,7 @@ using namespace std;
 
 // Hangman Game class
 class coreGame {
+private:
     const int MAX_BAD_GUESS = 7;  // Max bad guess of Game
     string category;              // Name of category file
     string catName;               // Name of category title
@@ -49,9 +50,9 @@ class coreGame {
     void renderLevel();                 // render level window
     void chooseLevelEvent();            // handle choose level event
     void initWord();                    // initialize word need guessing
-    void getSuggest();                  // get a suggestion
+    void hint();                  // get a suggestion
     void updateGuessedWord();           // update guessed word
-    void updateSuggest();               // update maximum number of suggestions
+    void updateHint();               // update maximum number of suggestions
     bool guessing();                    // determine whether the player is guessing or not
     void guessEvent();                  // handle guessing event
     void handleGuess();                 // handle guessing character

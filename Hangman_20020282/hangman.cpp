@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
     while (hangman->playing) {                 // while player is playing game
         hangman->startGame();                  // start a game
         do {                                   // initialize game loop for rendering
-            hangman->renderGameSDL();          // render SDL game
+            hangman->renderGameSDL();          // render SDL game1
             hangman->guessEvent();             // handle SDL keypress event
             hangman->handleGuess();            // handle game based on event
             hangman->updateTime();             // update playTime
