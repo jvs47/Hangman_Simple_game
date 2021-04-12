@@ -78,8 +78,8 @@ void coreGame::chooseCategoryEvent() {
                         catName = "Jobs";
                         break;
                     case '5':
-                        category = "Economic.txt";
-                        catName = "Economic";
+                        category = "Fruits.txt";
+                        catName = "Fruits";
                         break;
                     case '6':
                         category = "Evironment.txt";
@@ -101,7 +101,7 @@ void coreGame::renderCategory() {
     SDL->createTextTexture("2. City", 150, 150);
     SDL->createTextTexture("3. Clothes", 150, 200);
     SDL->createTextTexture("4. Jobs", 150, 250);
-    SDL->createTextTexture("5. Economic", 150, 300);
+    SDL->createTextTexture("5. Fruits", 150, 300);
     SDL->createTextTexture("6. Evironment", 150, 350);
     SDL->createTextTexture("5. Family", 150, 400);
     SDL->updateScreen();
