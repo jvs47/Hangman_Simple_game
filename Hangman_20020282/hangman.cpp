@@ -1,77 +1,36 @@
 //
-//  main.cpp
+//  hangman.cpp
 //  Hangman_20020282
 //
 //  Created by John Vu on 05/04/2021.
 //
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <fstream>
-#include <vector>
-#include <algorithm>
-#include <thread>
-#include <chrono>
-
-#include "draw.hpp"
-#include "utility.hpp"
+#include "coreGame.hpp"
+#include "SkickSDL.hpp"
 
 using namespace std;
 
-char readAGuess()
-{
-    char guess;
-    cout << "Please enter your next guess: ";
-    cin >> guess;
-    return guess;
-}
+const int PLAY_TIME = 90;               // Time of a hangman game
+const int SCREEN_WIDTH = 950;           // SDL window width
+const int SCREEN_HEIGHT = 900;          // SDL window height
+const string WINDOW_TITLE = "Hangman";  // SDL window title
 
-void update(string& guessedWord, const string& word, char guess)
-{
-    unsigned long n = guessedWord.length();
-    for (int i = 0; i < n; i++) {
-        if (word[i] == guess)
-            guessedWord[i] = guess;
+int main(int argc, char* argv[]) {
+    // initialize SkickSDL window
+    SkickSDL* SDL = new SkickSDL(WINDOW_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT);
+    SDL->openFont("/Users/jvs47/Downloads/Hangman-master/VeraMoBd.ttf", 30);         // text font and size
+    srand( static_cast<unsigned int>(time(nullptr))); // random seeds
+    coreGame* hangman = new coreGame(SDL, PLAY_TIME);  // initialize game
+    while (hangman->playing) {                 // while player is playing game
+        hangman->startGame();                  // start a game
+        do {                                   // initialize game loop for rendering
+            hangman->renderGameSDL();          // render SDL game
+            hangman->guessEvent();             // handle SDL keypress event
+            hangman->handleGuess();            // handle game based on event
+            hangman->updateTime();             // update playTime
+        } while (hangman->guessing());         // render game if the player is guessing
+        hangman->gameOver();                   // handle game over data and render SDL
     }
-}
-
-int main(int argc, char* argv[])
-{
-    srand( static_cast<unsigned int>(time(nullptr)));
-    string fileName = argc > 1 ? argv[1] : "/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/ogden_picturable_200.txt";
-
-    while (true) {
-        string word = chooseWord(fileName);
-        if (word.empty()) {
-            cout << "No word available in " << fileName << endl;
-            return 0;
-        }
-        string guessedWord = string(word.length(), '-');
-        int badGuessCount = 0;
-        const int MAX_BAD_GUESS = 7;
-        string badGuess;
-        
-        do {
-            renderGame(guessedWord, badGuessCount, badGuess);
-            char guess = readAGuess();
-
-            if (contains(word, guess)) {
-                update(guessedWord, word, guess);
-            } else {
-                badGuessCount++;
-                badGuess += guess;
-            }
-        } while (badGuessCount < MAX_BAD_GUESS && guessedWord != word);
-
-        printGameOverInfo(guessedWord, word, badGuessCount);
-        cout << "\nDo you want more (Y/N) ?";
-        string answer;
-        cin.ignore(1);
-        getline(cin, answer);
-        if (answer != "Y" && answer != "y")
-            break;
-    }
-
     return 0;
 }
+

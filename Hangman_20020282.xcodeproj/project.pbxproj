@@ -7,12 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D1D143F2622B79600FD304A /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D143E2622B79600FD304A /* libSDL2-2.0.0.dylib */; };
+		2D1D14402622B79600FD304A /* libSDL2-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2D1D143E2622B79600FD304A /* libSDL2-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2D1D14432622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D14422622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib */; };
+		2D1D14442622B7AB00FD304A /* libSDL2_ttf-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2D1D14422622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2D1D14472622EFE600FD304A /* SkickSDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D14452622EFE600FD304A /* SkickSDL.cpp */; };
+		2D1D14492622F31100FD304A /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D14482622F31100FD304A /* libSDL2_image-2.0.0.dylib */; };
+		2DA6C9DC2624657B003A3077 /* coreGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6C9DA2624657B003A3077 /* coreGame.cpp */; };
+		2DF42DCD2622AC8300E0B3A7 /* painter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF42DCB2622AC8300E0B3A7 /* painter.cpp */; };
 		2DF74625261B59CC00E2A4C8 /* hangman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF74624261B59CC00E2A4C8 /* hangman.cpp */; };
-		2DF7462F261B660700E2A4C8 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF7462D261B660700E2A4C8 /* draw.cpp */; };
 		2DF74633261B673300E2A4C8 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF74631261B673300E2A4C8 /* utility.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2D1D14412622B79600FD304A /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D1D14402622B79600FD304A /* libSDL2-2.0.0.dylib in Embed Libraries */,
+				2D1D14442622B7AB00FD304A /* libSDL2_ttf-2.0.0.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2DF7461F261B59CC00E2A4C8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -25,11 +44,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D1D143E2622B79600FD304A /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2/2.0.14_1/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D1D14422622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2_ttf/2.0.15/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D1D14452622EFE600FD304A /* SkickSDL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SkickSDL.cpp; sourceTree = "<group>"; };
+		2D1D14462622EFE600FD304A /* SkickSDL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SkickSDL.hpp; sourceTree = "<group>"; };
+		2D1D14482622F31100FD304A /* libSDL2_image-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_image-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2_image/2.0.5/lib/libSDL2_image-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D826E60262438D30035AEFD /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
+		2DA6C9DA2624657B003A3077 /* coreGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = coreGame.cpp; sourceTree = "<group>"; };
+		2DA6C9DB2624657B003A3077 /* coreGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = coreGame.hpp; sourceTree = "<group>"; };
 		2DA99A4326201E0300027B34 /* Dictionary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dictionary; sourceTree = "<group>"; };
+		2DF42DCB2622AC8300E0B3A7 /* painter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = painter.cpp; sourceTree = "<group>"; };
+		2DF42DCC2622AC8300E0B3A7 /* painter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = painter.hpp; sourceTree = "<group>"; };
 		2DF74621261B59CC00E2A4C8 /* Hangman_20020282 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Hangman_20020282; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DF74624261B59CC00E2A4C8 /* hangman.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hangman.cpp; sourceTree = "<group>"; };
-		2DF7462D261B660700E2A4C8 /* draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
-		2DF7462E261B660700E2A4C8 /* draw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = draw.hpp; sourceTree = "<group>"; };
 		2DF74631261B673300E2A4C8 /* utility.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utility.cpp; sourceTree = "<group>"; };
 		2DF74632261B673300E2A4C8 /* utility.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utility.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,17 +66,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1D14492622F31100FD304A /* libSDL2_image-2.0.0.dylib in Frameworks */,
+				2D1D143F2622B79600FD304A /* libSDL2-2.0.0.dylib in Frameworks */,
+				2D1D14432622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DF42DC62622A60300E0B3A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D1D14482622F31100FD304A /* libSDL2_image-2.0.0.dylib */,
+				2D1D14422622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib */,
+				2D1D143E2622B79600FD304A /* libSDL2-2.0.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2DF74618261B59CC00E2A4C8 = {
 			isa = PBXGroup;
 			children = (
 				2DF74623261B59CC00E2A4C8 /* Hangman_20020282 */,
 				2DF74622261B59CC00E2A4C8 /* Products */,
+				2DF42DC62622A60300E0B3A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,12 +105,17 @@
 		2DF74623261B59CC00E2A4C8 /* Hangman_20020282 */ = {
 			isa = PBXGroup;
 			children = (
+				2D826E60262438D30035AEFD /* img */,
 				2DA99A4326201E0300027B34 /* Dictionary */,
 				2DF74624261B59CC00E2A4C8 /* hangman.cpp */,
+				2DF42DCB2622AC8300E0B3A7 /* painter.cpp */,
+				2DF42DCC2622AC8300E0B3A7 /* painter.hpp */,
+				2DA6C9DA2624657B003A3077 /* coreGame.cpp */,
+				2DA6C9DB2624657B003A3077 /* coreGame.hpp */,
+				2D1D14452622EFE600FD304A /* SkickSDL.cpp */,
+				2D1D14462622EFE600FD304A /* SkickSDL.hpp */,
 				2DF74631261B673300E2A4C8 /* utility.cpp */,
 				2DF74632261B673300E2A4C8 /* utility.hpp */,
-				2DF7462D261B660700E2A4C8 /* draw.cpp */,
-				2DF7462E261B660700E2A4C8 /* draw.hpp */,
 			);
 			path = Hangman_20020282;
 			sourceTree = "<group>";
@@ -84,6 +130,7 @@
 				2DF7461D261B59CC00E2A4C8 /* Sources */,
 				2DF7461E261B59CC00E2A4C8 /* Frameworks */,
 				2DF7461F261B59CC00E2A4C8 /* CopyFiles */,
+				2D1D14412622B79600FD304A /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -132,7 +179,9 @@
 			files = (
 				2DF74633261B673300E2A4C8 /* utility.cpp in Sources */,
 				2DF74625261B59CC00E2A4C8 /* hangman.cpp in Sources */,
-				2DF7462F261B660700E2A4C8 /* draw.cpp in Sources */,
+				2D1D14472622EFE600FD304A /* SkickSDL.cpp in Sources */,
+				2DA6C9DC2624657B003A3077 /* coreGame.cpp in Sources */,
+				2DF42DCD2622AC8300E0B3A7 /* painter.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +191,7 @@
 		2DF74626261B59CC00E2A4C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -190,6 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -201,7 +251,7 @@
 		2DF74627261B59CC00E2A4C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -243,6 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -254,6 +305,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.14_1/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
+					/usr/local/Cellar/sdl2_image/2.0.5/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -262,6 +323,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/sdl2/2.0.14_1/lib,
+					/usr/local/Cellar/sdl2_ttf/2.0.15/lib,
+					/usr/local/Cellar/sdl2_image/2.0.5/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

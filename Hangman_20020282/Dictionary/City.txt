@@ -1,11 +1,10 @@
-35
+34
 city: thanh pho
 sidewalk: via he
 intersection: giao lo
 avenue: dai lo
 roundabout: vong xoay
 apartment house: chung cu
-bus stop: diem dung xe bus
 downtown: trung tam thanh pho
 shopping mall: trung tam thuong mai
 tower: thap
