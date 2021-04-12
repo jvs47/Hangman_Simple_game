@@ -32,7 +32,7 @@ class coreGame {
     string guessedStr;            // Guessed word exclude suggested characters
     int badGuessCount;            // Number of bad guesses made by the player
     int suggested;                // Number of suggested characters
-    int maxSuggest;               // Maximum number of suggestions
+    unsigned long maxSuggest;     // Maximum number of suggestions
     int timeLeft;                 // Left time in second
     string badGuess;              // Bad guessed characters
     time_t startTime;             // The start time of Game
@@ -40,7 +40,7 @@ class coreGame {
 
    public:
     bool playing;                       // Game is playing or not
-    coreGame(SkickSDL*, int);               // initialize Game
+    coreGame(SkickSDL*, int);           // initialize Game
     void startGame();                   // initialize new Game
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window

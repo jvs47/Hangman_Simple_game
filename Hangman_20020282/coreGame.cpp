@@ -59,27 +59,35 @@ void coreGame::chooseCategoryEvent() {
             playing = false;
         } else if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '5')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '7')
                 switch (keyName[0]) {
                     case '1':
-                        category = "all.txt";
-                        catName = "All Categories";
+                        category = "Animals.txt";
+                        catName = "Animals";
                         break;
                     case '2':
-                        category = "fruits.txt";
-                        catName = "Fruits";
+                        category = "City.txt";
+                        catName = "City";
                         break;
                     case '3':
-                        category = "asia.txt";
-                        catName = "Asia Countries";
+                        category = "Clothes.txt";
+                        catName = "Clothes";
                         break;
                     case '4':
-                        category = "jobs.txt";
+                        category = "Jobs.txt";
                         catName = "Jobs";
                         break;
                     case '5':
-                        category = "plants.txt";
-                        catName = "Plants";
+                        category = "Economic.txt";
+                        catName = "Economic";
+                        break;
+                    case '6':
+                        category = "Evironment.txt";
+                        catName = "Environment";
+                        break;
+                    case '7':
+                        category = "Family.txt";
+                        catName = "Family";
                         break;
                 }
         }
@@ -89,11 +97,13 @@ void coreGame::chooseCategoryEvent() {
 void coreGame::renderCategory() {
     SDL->createImageBackground("hang0.png");
     SDL->createTextTexture("Choose word category:", 100, 50);
-    SDL->createTextTexture("1. All Categories", 150, 100);
-    SDL->createTextTexture("2. Fruits", 150, 150);
-    SDL->createTextTexture("3. Asia Countries", 150, 200);
+    SDL->createTextTexture("1. Animals", 150, 100);
+    SDL->createTextTexture("2. City", 150, 150);
+    SDL->createTextTexture("3. Clothes", 150, 200);
     SDL->createTextTexture("4. Jobs", 150, 250);
-    SDL->createTextTexture("5. Plants", 150, 300);
+    SDL->createTextTexture("5. Economic", 150, 300);
+    SDL->createTextTexture("6. Evironment", 150, 350);
+    SDL->createTextTexture("5. Family", 150, 400);
     SDL->updateScreen();
 }
 
@@ -123,6 +133,12 @@ void coreGame::chooseDifficultyEvent() {
                     case '2':
                         difficult = 1;
                         break;
+                    case '3':
+                        difficult = 2;
+                        break;
+                    case '4':
+                        difficult = 3;
+                        break;
                 }
         }
     }
@@ -133,7 +149,9 @@ void coreGame::renderDifficulty() {
     SDL->createTextTexture("Category: " + catName, 100, 50);
     SDL->createTextTexture("Choose word difficulty:", 100, 100);
     SDL->createTextTexture("1. Easy", 150, 150);
-    SDL->createTextTexture("2. Hard", 150, 200);
+    SDL->createTextTexture("2. Medium", 150, 200);
+    SDL->createTextTexture("3. Hard", 150, 250);
+    SDL->createTextTexture("4. Hell", 150, 300);
     SDL->updateScreen();
 }
 
@@ -252,7 +270,7 @@ void coreGame::updateGuessedWord() {
 
 void coreGame::updateSuggest() {
     if (suggested < maxSuggest) {
-        int suggest = 0;
+        unsigned long suggest = 0;
         unsigned long n = guessedWord.length();
         unordered_map<char, int> m;
         for (int i = 0; i < n; i++)
