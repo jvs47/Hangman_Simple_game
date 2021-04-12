@@ -45,9 +45,9 @@ class coreGame {
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
-    void chooseDifficulty();            // Choose the difficulty of random word
-    void renderDifficulty();            // render difficulty window
-    void chooseDifficultyEvent();       // handle choose difficulty event
+    void chooseLevel();                 // Choose the level of random word
+    void renderLevel();                 // render level window
+    void chooseLevelEvent();            // handle choose level event
     void initWord();                    // initialize word need guessing
     void getSuggest();                  // get a suggestion
     void updateGuessedWord();           // update guessed word

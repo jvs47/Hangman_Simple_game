@@ -24,7 +24,7 @@ void coreGame::startGame() {
     quit = false;
     system("clear");
     chooseCategory();
-    chooseDifficulty();
+    chooseLevel();
     initWord();
     guessedWord = string(word.length(), '-');
     guessChar = ' ';
@@ -107,15 +107,15 @@ void coreGame::renderCategory() {
     SDL->updateScreen();
 }
 
-void coreGame::chooseDifficulty() {
+void coreGame::chooseLevel() {
     difficult = -1;
     while (difficult == -1 && playing && !quit) {
-        renderDifficulty();
-        chooseDifficultyEvent();
+        renderLevel();
+        chooseLevelEvent();
     }
 }
 
-void coreGame::chooseDifficultyEvent() {
+void coreGame::chooseLevelEvent() {
     SDL_Event event;
     if (SDL_WaitEvent(&event)) {
         if (event.type == SDL_QUIT) {
@@ -144,10 +144,10 @@ void coreGame::chooseDifficultyEvent() {
     }
 }
 
-void coreGame::renderDifficulty() {
+void coreGame::renderLevel() {
     SDL->createImageBackground("hang0.png");
     SDL->createTextTexture("Category: " + catName, 100, 50);
-    SDL->createTextTexture("Choose word difficulty:", 100, 100);
+    SDL->createTextTexture("Choose word Level:", 100, 100);
     SDL->createTextTexture("1. Easy", 150, 150);
     SDL->createTextTexture("2. Medium", 150, 200);
     SDL->createTextTexture("3. Hard", 150, 250);

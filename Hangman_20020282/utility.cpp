@@ -33,15 +33,14 @@ string chooseWord(const string fileName, int level)
     getline(file, data);
     while (!file.eof()) {
         string line;
-        getline(file, line, ':');
-        string line2;
-        getline(file, line2);
+        getline(file, line);
         if (file && !line.empty())
             vocabulary.push_back(normalize(line));
     }
     srand( static_cast<unsigned int>(time(nullptr)));
    
     file.close();
+    
     int i = rand() % n;
     string word = vocabulary[i];
     return n>0? ((word.length() > 5 && level) || (word.length() < 5 && !level) ? word : chooseWord(fileName, level)) : "";
