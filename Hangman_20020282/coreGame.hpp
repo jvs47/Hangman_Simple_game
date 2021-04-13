@@ -18,10 +18,11 @@ using namespace std;
 // Hangman Game class
 class coreGame {
 private:
-    const int MAX_BAD_GUESS = 7;  // Max bad guess of Game
+    const int MAX_BAD_GUESS_Nor = 7;  // Max bad guess of Normal Game
+    const int MAX_BAD_GUESS_Hel = 1; // Max bad guess of Hard-core Game
     string category;              // Name of category file
     string catName;               // Name of category title
-    int difficult = -1;           // Difficulty of words
+    int level = -1;               // Level of words
     SkickSDL* SDL;                // Selfmade SDL for easy use
     int playTime;                 // Playing time of Game
     int win;                      // Number of win games
@@ -38,11 +39,14 @@ private:
     string badGuess;              // Bad guessed characters
     time_t startTime;             // The start time of Game
     int animatedTime;             // Time of animations made
+    int score;                    // Score
+    string playerName;            // player name high score
 
    public:
     bool playing;                       // Game is playing or not
     coreGame(SkickSDL*, int);           // initialize Game
     void startGame();                   // initialize new Game
+    void welcome();
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
@@ -50,9 +54,9 @@ private:
     void renderLevel();                 // render level window
     void chooseLevelEvent();            // handle choose level event
     void initWord();                    // initialize word need guessing
-    void hint();                  // get a suggestion
+    void hint();                        // get a suggestion
     void updateGuessedWord();           // update guessed word
-    void updateHint();               // update maximum number of suggestions
+    void updateHint();                  // update maximum number of suggestions
     bool guessing();                    // determine whether the player is guessing or not
     void guessEvent();                  // handle guessing event
     void handleGuess();                 // handle guessing character
@@ -63,6 +67,8 @@ private:
     void renderGameSDL();               // render playing game window
     void renderGameOverSDL(int);        // render game over window
     void createGameOverSDL();           // initialize game over loop for rendering
+    bool is_highScore();                // check whether high score or not
+    void nameHighScore();               // store player name high score
     void renderPlane(char, int);        // render flying plane
     void planeEvent(SDL_Event, bool&);  // handle event while the plane is flying
 };

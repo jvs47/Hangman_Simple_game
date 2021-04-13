@@ -15,5 +15,7 @@
 std::string normalize(const std::string s);
 std::string chooseWord(const std::string fileName, int level);
 bool contains(std::string word, char guess);
-
+void storeHighScore(std::string playerName, int score, int timeplayed, int win, int loss);
+int calScore(int level, int suggested);
+int getHighScore();
 #endif /* utility_hpp */
