@@ -65,6 +65,7 @@ private:
     void updateTime();                  // update playing time
     void badGuessed();                  // handle bad guessed
     void gameOver();                    // initialize game over
+    void timeplayed();                  // update timePlayed
     void checkContinue(SDL_Event);      // check if player want to continue playing game
     void renderGameSDL();               // render playing game window
     void renderGameOverSDL(int);        // render game over window

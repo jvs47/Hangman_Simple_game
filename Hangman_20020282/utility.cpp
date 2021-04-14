@@ -23,6 +23,8 @@ string normalize(const string s)
 string chooseWord(const string fileName, int level)
 {
     vector<string> vocabulary;
+    vector<string> vocabulary_easy;
+    vector<string> vocabulary_hard;
     ifstream fileIn;
     fileIn.open("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Dictionary/" + fileName);
     if (!fileIn.is_open())
@@ -30,8 +32,6 @@ string chooseWord(const string fileName, int level)
         cout << "Cannot open file " << fileName << endl;
         return "";
     }
-    string data;
-    getline(fileIn, data);
     while (!fileIn.eof()) {
         string line;
         getline(fileIn, line);
@@ -43,11 +43,36 @@ string chooseWord(const string fileName, int level)
     fileIn.close();
     unsigned long n = vocabulary.size();
     cout << "vocabulary size = " << n << endl;
-    string word = vocabulary[rand() % n];
+    
+    for(unsigned long i = 0; i<n; i++)
+    {
+        if(vocabulary[i].length()<6)
+            vocabulary_easy.push_back(vocabulary[i]);
+        else
+            vocabulary_hard.push_back(vocabulary[i]);
+    }
+    
     if(level != 2)
-        return n > 0 ? ((word.length() > 6 && level) || (word.length() <= 6 && !level) ? word : chooseWord(fileName, level)) : "";
+        {
+            if(!level)
+            {
+                unsigned long easy = vocabulary_easy.size();
+                string word = vocabulary_easy[rand() % easy];
+                return word;
+            }
+            //return n > 0 ? ((word.length() >= 6 && level) || (word.length() < 6 && !level) ? word : chooseWord(fileName, level)) : "";
+            else
+            {
+                unsigned long hard = vocabulary_hard.size();
+                string word = vocabulary_hard[rand() % hard];
+                return word;
+            }
+        }
     else
-        return n>0? word : "";
+    {
+        string word = vocabulary[rand() % n];
+        return word;
+    }
 }
 
 bool contains(string word, char guess)
@@ -70,7 +95,7 @@ void storeHighScore(string playerName, int score, int timeplayed, int win, int l
     << setfill(' ') << setw(10) << timeplayed << ' '
     << setfill(' ') << setw(3) << win << ' '
     << setfill(' ') << setw(4) << loss << ' '
-    << setfill(' ') << setw(24) << date_time << endl;
+    << setfill(' ') << setw(30) << date_time;
     fileOut.close();
 }
 

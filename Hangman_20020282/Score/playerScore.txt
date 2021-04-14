@@ -1,6 +1,2 @@
-PlayerName Score Timeplayed Win Loss             Time_recored
+PlayerName Score Timesplayed Win Loss             Time_recored
       abcd     0          0   0    0
-     jvs47    50         90   1    2
-       abc   100          9   2    3 Wed Apr 14 12:45:56 2021
-    newguy   150         12   2    1 Wed Apr 14 12:52:14 2021
-

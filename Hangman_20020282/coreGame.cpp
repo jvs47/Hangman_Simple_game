@@ -256,9 +256,13 @@ void coreGame::gameOver() {
     else
     {   win++;
         score += calScore(level,suggested);
-        timePlayed += playTime-timeLeft;
     }
     createGameOverSDL();
+}
+
+void coreGame::timeplayed()
+{
+    timePlayed = win+loss;
 }
 
 void coreGame::updateGuessedWord() {
@@ -359,6 +363,7 @@ void coreGame::nameHighScore()
 {
     playerName = stringInput();
     date_time = getTime();
+    timeplayed();
     storeHighScore(playerName, score, timePlayed, win, loss, date_time);
 }
 

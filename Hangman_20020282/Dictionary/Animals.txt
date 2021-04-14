@@ -1,4 +1,3 @@
-60
 dog
 cat
 chick
