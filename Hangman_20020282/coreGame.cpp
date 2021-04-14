@@ -19,6 +19,7 @@ coreGame::coreGame(SkickSDL* SkickSDL, int time) : SDL(SkickSDL), playTime(time)
     win = 0;
     loss = 0;
     score = 0;
+    timePlayed = 0;
 }
 
 void coreGame::startGame() {
@@ -253,8 +254,9 @@ void coreGame::gameOver() {
     if (guessedWord != word)
         loss++;
     else
-    {win++;
+    {   win++;
         score += calScore(level,suggested);
+        timePlayed += playTime-timeLeft;
     }
     createGameOverSDL();
 }
@@ -356,7 +358,8 @@ bool coreGame::is_highScore()
 void coreGame::nameHighScore()
 {
     playerName = stringInput();
-    storeHighScore(playerName, score, playTime, win, loss);
+    date_time = getTime();
+    storeHighScore(playerName, score, timePlayed, win, loss, date_time);
 }
 
 void coreGame::checkContinue(SDL_Event e) {

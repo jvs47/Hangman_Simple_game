@@ -10,6 +10,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 using namespace std;
 
 string normalize(const string s)
@@ -54,7 +55,7 @@ bool contains(string word, char guess)
     return (word.find(guess) != string::npos);
 }
 
-void storeHighScore(string playerName, int score, int timeplayed, int win, int loss)
+void storeHighScore(string playerName, int score, int timeplayed, int win, int loss, string date_time)
 {
     ofstream fileOut;
     fileOut.open("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Score/playerScore.txt", std::ios::app);
@@ -63,14 +64,26 @@ void storeHighScore(string playerName, int score, int timeplayed, int win, int l
         cout << "Cannot open Score file\n";
         return;
     }
-    string line = normalize(playerName) + ' ' + to_string(score) + ' ' + to_string(timeplayed) + ' ' +to_string(win) + '-' + to_string(loss);
-    fileOut << line << endl;
+    //string norName = normalize(playerName)+ ' ' + to_string(score) + ' ' + to_string(timeplayed) + ' ' +to_string(win) + '-' + to_string(loss);
+    fileOut << setfill(' ') << setw(10) << normalize(playerName) << ' '
+            << setfill(' ') << setw(5) << score << ' '
+    << setfill(' ') << setw(10) << timeplayed << ' '
+    << setfill(' ') << setw(3) << win << ' '
+    << setfill(' ') << setw(4) << loss << ' '
+    << setfill(' ') << setw(24) << date_time << endl;
     fileOut.close();
 }
 
 int calScore(int level, int suggested)
 {
     return (level+1)*100 - 50*suggested;
+}
+
+playerScore::playerScore(std::string _n, int _s, int _t): name(_n), score(_s), time(_t){};
+
+bool cmp(const playerScore& p1, const playerScore& p2)
+{
+    return p1.score < p2.score;
 }
 
 int getHighScore()
@@ -85,9 +98,7 @@ int getHighScore()
     string line;
     getline(fileIn, line);
     
-    vector<string> playerName;
-    vector<int> score;
-    vector<int> timeplayed;
+    vector<playerScore> p;
     while(!fileIn.eof())
         {
             string _playerName;
@@ -96,9 +107,20 @@ int getHighScore()
             fileIn >> _score;
             int _timeplayed;
             fileIn >> _timeplayed;
-            playerName.push_back(_playerName);
-            score.push_back(_score);
-            timeplayed.push_back(_timeplayed);
+            playerScore p1 = playerScore(_playerName, _score, _timeplayed);
+            p.push_back(p1);
+            getline(fileIn,line);
         }
-    return *max_element(score.begin(), score.end());
+    auto maxScore = *max_element(p.begin(), p.end(), cmp);
+    return maxScore.score;
+}
+
+string getTime()
+{
+    // current date and time on the current system
+       time_t now = time(0);
+
+       // convert now to string form
+       string date_time = ctime(&now);
+    return date_time;
 }

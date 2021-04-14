@@ -41,6 +41,8 @@ private:
     int animatedTime;             // Time of animations made
     int score;                    // Score
     string playerName;            // player name high score
+    string date_time;             // Realtime get high score
+    int timePlayed;               // time played
 
    public:
     bool playing;                       // Game is playing or not

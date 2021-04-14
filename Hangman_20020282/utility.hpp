@@ -11,11 +11,20 @@
 #include <stdio.h>
 #include <string>
 
+struct playerScore
+{
+    std::string name;
+    int score;
+    int time;
+    playerScore(){};
+    playerScore(std::string _n, int _s, int _t);
+};
 
 std::string normalize(const std::string s);
 std::string chooseWord(const std::string fileName, int level);
 bool contains(std::string word, char guess);
-void storeHighScore(std::string playerName, int score, int timeplayed, int win, int loss);
+void storeHighScore(std::string playerName, int score, int timeplayed, int win, int loss, std::string date_time);
 int calScore(int level, int suggested);
 int getHighScore();
+std::string getTime();
 #endif /* utility_hpp */
