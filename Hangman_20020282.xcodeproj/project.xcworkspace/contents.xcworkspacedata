@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Hangman_20020282/Font">
+   </FileRef>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
