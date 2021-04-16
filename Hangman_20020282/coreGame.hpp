@@ -22,6 +22,7 @@ private:
     const int MAX_BAD_GUESS_Hel = 1; // Max bad guess of Hard-core Game
     string category;              // Name of category file
     string catName;               // Name of category title
+    int selection = -1;
     int level = -1;               // Level of words
     SkickSDL* SDL;                // Selfmade SDL for easy use
     int playTime;                 // Playing time of Game
@@ -42,13 +43,15 @@ private:
     int score;                    // Score
     string playerName;            // player name high score
     string date_time;             // Realtime get high score
-    int timePlayed;               // time played
-
-   public:
+    int timePlayed;               // times played
+    
+public:
     bool playing;                       // Game is playing or not
-    coreGame(SkickSDL*, int);           // initialize Game
+    coreGame(SkickSDL*);           // initialize Game
     void startGame();                   // initialize new Game
     void welcome();
+    void renderWelcome();
+    void handleWelcomeEvent();
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event

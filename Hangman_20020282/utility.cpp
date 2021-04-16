@@ -42,6 +42,7 @@ string chooseWord(const string fileName, int level)
    
     fileIn.close();
     unsigned long n = vocabulary.size();
+    if(n==0) return "";
     cout << "vocabulary size = " << n << endl;
     
     for(unsigned long i = 0; i<n; i++)
@@ -60,7 +61,6 @@ string chooseWord(const string fileName, int level)
                 string word = vocabulary_easy[rand() % easy];
                 return word;
             }
-            //return n > 0 ? ((word.length() >= 6 && level) || (word.length() < 6 && !level) ? word : chooseWord(fileName, level)) : "";
             else
             {
                 unsigned long hard = vocabulary_hard.size();

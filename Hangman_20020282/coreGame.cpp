@@ -8,13 +8,14 @@
 #include "coreGame.hpp"
 #include <ctime>
 #include <unordered_map>
+#include <curses.h>
 
 #include "SkickSDL.hpp"
 #include "utility.hpp"
 #include "stringInput.hpp"
 using namespace std;
 
-coreGame::coreGame(SkickSDL* SkickSDL, int time) : SDL(SkickSDL), playTime(time) {
+coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
     playing = true;
     win = 0;
     loss = 0;
@@ -25,6 +26,7 @@ coreGame::coreGame(SkickSDL* SkickSDL, int time) : SDL(SkickSDL), playTime(time)
 void coreGame::startGame() {
     quit = false;
     system("clear");
+    welcome();
     chooseCategory();
     chooseLevel();
     initWord();
@@ -38,9 +40,68 @@ void coreGame::startGame() {
     animatedTime = 0;
     time(&startTime);
     for (unsigned int i = 0; i < word.length(); i++)
-        if (word[i] == ' ')
-            guessedWord[i] = ' ';
+    if (word[i] == ' ')
+        guessedWord[i] = ' ';
     updateHint();
+}
+
+void coreGame::welcome()
+{
+    while(selection == -1 && playing && !quit)
+    {
+        renderWelcome();
+        handleWelcomeEvent();
+    }
+}
+
+void coreGame::renderWelcome()
+{
+    SDL->createImageBackground("hang0.png");
+    SDL->createTextTexture("WELCOME TO HANGMAN", 100, 50);
+    SDL->createTextTexture("1. New game", 150, 100);
+    SDL->createTextTexture("2. High score", 150, 150);
+    SDL->createTextTexture("3. How to play", 150, 200);
+    SDL->createTextTexture("Press ESC to Quit", 150, 400);
+    SDL->updateScreen();
+}
+
+void coreGame::handleWelcomeEvent()
+{
+    SDL_Event event;
+    if (SDL_WaitEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            playing = false;
+            quit = true;
+        } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
+            playing = false;
+        } else if (event.type == SDL_KEYUP) {
+            string keyName = SDL_GetKeyName(event.key.keysym.sym);
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '5')
+                switch (keyName[0]) {
+                    case '1':
+                    {
+                        playing = true;
+                        quit = false;
+                        selection = 0;
+                    }
+                        break;
+                    case '2':
+                    {
+                        playing = true;
+                        quit = false;
+                        selection = 1;
+                    }
+                        break;
+                    case '3':
+                    {
+                        playing = true;
+                        quit = false;
+                        selection = 2;
+                    }
+                        break;
+                }
+        }
+    }
 }
 
 void coreGame::chooseCategory() {
@@ -127,16 +188,25 @@ void coreGame::chooseLevelEvent() {
             playing = false;
         } else if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '5')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
                 switch (keyName[0]) {
                     case '1':
+                    {
                         level = 0;
+                        playTime = 90;
+                    }
                         break;
                     case '2':
+                    {
                         level = 1;
+                        playTime = 150;
+                    }
                         break;
                     case '3':
+                    {
                         level = 2;
+                        playTime = 200;
+                    }
                         break;
                 }
         }
@@ -284,8 +354,8 @@ void coreGame::updateHint() {
         unsigned long n = guessedWord.length();
         unordered_map<char, int> m;
         for (int i = 0; i < n; i++)
-            if (guessedWord[i] == '-')
-                m[word[i]]++;
+        if (guessedWord[i] == '-')
+            m[word[i]]++;
         suggest = m.size();
         maxSuggest = suggest / 2;
     }
@@ -308,7 +378,7 @@ void coreGame::hint() {
 
 void coreGame::renderGameSDL() {
     SDL->createImageBackground("hang" + to_string(badGuessCount) + ".png");
-    SDL->createTextTexture("Time : " + to_string(timeLeft), 750, 5);
+    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 750, 5);
     SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
     SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
     SDL->createTextTexture("Score: " + to_string(score), 750, 125);
@@ -325,6 +395,7 @@ void coreGame::renderGameOverSDL(int imageIndex) {
     
     if (timeLeft <= 0)
         SDL->createTextTexture("Time Up!!!", 750, 5);
+    
     SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
     SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
     SDL->createTextTexture("Score: " + to_string(score), 750, 125);

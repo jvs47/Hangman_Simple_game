@@ -10,7 +10,6 @@
 
 using namespace std;
 
-const int PLAY_TIME = 90;               // Time of a hangman game
 const int SCREEN_WIDTH = 950;           // SDL window width
 const int SCREEN_HEIGHT = 900;          // SDL window height
 const string WINDOW_TITLE = "Hangman";  // SDL window title
@@ -18,9 +17,9 @@ const string WINDOW_TITLE = "Hangman";  // SDL window title
 int main(int argc, char* argv[]) {
     // initialize SkickSDL window
     SkickSDL* SDL = new SkickSDL(WINDOW_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT);
-    SDL->openFont("/Users/jvs47/Downloads/Hangman-master/VeraMoBd.ttf", 30);         // text font and size
+    SDL->openFont("/Users/jvs47/Downloads/Hangman-master/VeraMoBd.ttf", 30); // text font and size
     srand( static_cast<unsigned int>(time(nullptr))); // random seeds
-    coreGame* hangman = new coreGame(SDL, PLAY_TIME);  // initialize game
+    coreGame* hangman = new coreGame(SDL);  // initialize game
     while (hangman->playing) {                 // while player is playing game
         hangman->startGame();                  // start a game
         do {                                   // initialize game loop for rendering
