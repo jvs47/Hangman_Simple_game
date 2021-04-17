@@ -106,7 +106,7 @@ void coreGame::handleWelcomeEvent()
 
 void coreGame::chooseCategory() {
     category = "";
-    while (category == "" && playing && !quit) {
+    while (category == "" && playing && !quit && selection==0) {
         renderCategory();
         chooseCategoryEvent();
     }

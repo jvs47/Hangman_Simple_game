@@ -52,6 +52,9 @@ public:
     void welcome();
     void renderWelcome();
     void handleWelcomeEvent();
+    void Highscore();
+    void renderHighscore();
+    void handleHighscore();
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
