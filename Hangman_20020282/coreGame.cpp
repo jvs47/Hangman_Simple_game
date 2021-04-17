@@ -17,6 +17,7 @@ using namespace std;
 
 coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
     playing = true;
+    selection = -1;
     win = 0;
     loss = 0;
     score = 0;
@@ -26,7 +27,8 @@ coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
 void coreGame::startGame() {
     quit = false;
     system("clear");
-    welcome();
+    //welcome();
+    //highScore();
     chooseCategory();
     chooseLevel();
     initWord();
@@ -97,6 +99,62 @@ void coreGame::handleWelcomeEvent()
                         playing = true;
                         quit = false;
                         selection = 2;
+                    }
+                        break;
+                }
+        }
+    }
+}
+
+void coreGame::highScore()
+{
+    while(selection==1 && playing && !quit)
+    {
+        renderHighscore();
+        handleHighscore();
+    }
+}
+
+void coreGame::renderHighscore()
+{
+    SDL->createImageBackground("hang0.png");
+    SDL->createTextTexture("____HIGH SCORE___", 100, 50);
+    SDL->createTextTexture("1. New game", 150, 100);
+    SDL->createTextTexture("2. High score", 150, 150);
+    SDL->createTextTexture("3. How to play", 150, 200);
+    SDL->createTextTexture("Press ESC to Quit", 150, 400);
+    SDL->updateScreen();
+}
+
+void coreGame::handleHighscore()
+{
+    SDL_Event event;
+    if (SDL_WaitEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            playing = false;
+            quit = true;
+        } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
+            playing = false;
+        } else if (event.type == SDL_KEYUP) {
+            string keyName = SDL_GetKeyName(event.key.keysym.sym);
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
+                switch (keyName[0]) {
+                    case '1':
+                    {
+                        level = 0;
+                        playTime = 90;
+                    }
+                        break;
+                    case '2':
+                    {
+                        level = 1;
+                        playTime = 150;
+                    }
+                        break;
+                    case '3':
+                    {
+                        level = 2;
+                        playTime = 200;
                     }
                         break;
                 }
@@ -425,8 +483,8 @@ void coreGame::createGameOverSDL() {
 
 bool coreGame::is_highScore()
 {
-    int highScore = getHighScore();
-    if(score>highScore)
+    int maxScore = maxHighScore();
+    if(score>maxScore)
         return 1;
     return 0;
 }

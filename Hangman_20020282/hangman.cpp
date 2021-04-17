@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
     srand( static_cast<unsigned int>(time(nullptr))); // random seeds
     coreGame* hangman = new coreGame(SDL);  // initialize game
     while (hangman->playing) {                 // while player is playing game
+        hangman->welcome();
         hangman->startGame();                  // start a game
         do {                                   // initialize game loop for rendering
             hangman->renderGameSDL();          // render SDL game1

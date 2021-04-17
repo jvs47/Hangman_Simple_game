@@ -13,6 +13,8 @@
 #include <iomanip>
 using namespace std;
 
+std::vector<playerScore> p;
+
 string normalize(const string s)
 {
     string news = s;
@@ -111,19 +113,20 @@ bool cmp(const playerScore& p1, const playerScore& p2)
     return p1.score < p2.score;
 }
 
-int getHighScore()
+
+void getHighScore()
 {
     ifstream fileIn;
     fileIn.open("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Score/playerScore.txt", std::ios::in);
     if(!fileIn.is_open())
     {
         cout << "Cannot open Score file\n";
-        return -1;
+        return;
     }
     string line;
     getline(fileIn, line);
     
-    vector<playerScore> p;
+    
     while(!fileIn.eof())
         {
             string _playerName;
@@ -136,8 +139,12 @@ int getHighScore()
             p.push_back(p1);
             getline(fileIn,line);
         }
-    auto maxScore = *max_element(p.begin(), p.end(), cmp);
-    return maxScore.score;
+}
+
+int maxHighScore()
+{
+    auto maxHigh = *max_element(p.begin(), p.end(), cmp);
+    return maxHigh.score;
 }
 
 string getTime()
