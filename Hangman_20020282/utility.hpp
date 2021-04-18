@@ -17,9 +17,11 @@ struct playerScore
     std::string name;
     int score;
     int time;
-    int maxScore;
+    int win;
+    int loss;
+    std::string recored;
     playerScore(){};
-    playerScore(std::string _n, int _s, int _t);
+    playerScore(std::string _n, int _s, int _t, int _w, int _l, std::string _r);
     
 };
 
@@ -29,7 +31,9 @@ bool contains(std::string word, char guess);
 void storeHighScore(std::string playerName, int score, int timeplayed, int win, int loss, std::string date_time);
 int calScore(int level, int suggested);
 
-void getHighScore();
+std::vector<playerScore> getHighScore();
 int maxHighScore();
 std::string getTime();
+
+std::string paddingStr(const playerScore &p, int &i);
 #endif /* utility_hpp */

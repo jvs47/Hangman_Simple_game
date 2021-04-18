@@ -24,35 +24,13 @@ coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
     timePlayed = 0;
 }
 
-void coreGame::startGame() {
-    quit = false;
-    system("clear");
-    //welcome();
-    //highScore();
-    chooseCategory();
-    chooseLevel();
-    initWord();
-    guessedWord = string(word.length(), '-');
-    guessChar = ' ';
-    badGuessCount = 0;
-    maxSuggest = 10;
-    badGuess = "";
-    suggested = 0;
-    guessedStr = "";
-    animatedTime = 0;
-    time(&startTime);
-    for (unsigned int i = 0; i < word.length(); i++)
-    if (word[i] == ' ')
-        guessedWord[i] = ' ';
-    updateHint();
-}
-
 void coreGame::welcome()
 {
     while(selection == -1 && playing && !quit)
     {
         renderWelcome();
         handleWelcomeEvent();
+        highScore();
     }
 }
 
@@ -106,6 +84,28 @@ void coreGame::handleWelcomeEvent()
     }
 }
 
+
+void coreGame::startGame() {
+    quit = false;
+    system("clear");
+    chooseCategory();
+    chooseLevel();
+    initWord();
+    guessedWord = string(word.length(), '-');
+    guessChar = ' ';
+    badGuessCount = 0;
+    maxSuggest = 10;
+    badGuess = "";
+    suggested = 0;
+    guessedStr = "";
+    animatedTime = 0;
+    time(&startTime);
+    for (unsigned int i = 0; i < word.length(); i++)
+    if (word[i] == ' ')
+        guessedWord[i] = ' ';
+    updateHint();
+}
+
 void coreGame::highScore()
 {
     while(selection==1 && playing && !quit)
@@ -119,10 +119,16 @@ void coreGame::renderHighscore()
 {
     SDL->createImageBackground("hang0.png");
     SDL->createTextTexture("____HIGH SCORE___", 100, 50);
-    SDL->createTextTexture("1. New game", 150, 100);
-    SDL->createTextTexture("2. High score", 150, 150);
-    SDL->createTextTexture("3. How to play", 150, 200);
-    SDL->createTextTexture("Press ESC to Quit", 150, 400);
+    SDL->createTextTexture("Rank PlayerName Score Times Win Loss                   Time_recored", 80, 100);
+    vector<playerScore> p = getHighScore();
+    unsigned long n =  p.size();
+    for(int i = 1; i<=n; i++)
+    {
+        playerScore p1 = p[i-1];
+        string line = paddingStr(p1, i);
+        SDL->createTextTexture(line, 80, 100+50*i);
+    }
+    SDL->createTextTexture("Press Enter to go back, ESC to Quit", 150, 400);
     SDL->updateScreen();
 }
 
@@ -135,32 +141,14 @@ void coreGame::handleHighscore()
             quit = true;
         } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
             playing = false;
-        } else if (event.type == SDL_KEYUP) {
-            string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
-                switch (keyName[0]) {
-                    case '1':
-                    {
-                        level = 0;
-                        playTime = 90;
-                    }
-                        break;
-                    case '2':
-                    {
-                        level = 1;
-                        playTime = 150;
-                    }
-                        break;
-                    case '3':
-                    {
-                        level = 2;
-                        playTime = 200;
-                    }
-                        break;
-                }
+        } else if (event.type == SDL_KEYUP && (event.key.keysym.sym == SDLK_RETURN ||event.key.keysym.sym == SDLK_RETURN2 ||event.key.keysym.sym == SDLK_KP_ENTER)) {
+            playing = true;
+            quit = false;
+            selection = -1;
         }
     }
 }
+
 
 void coreGame::chooseCategory() {
     category = "";
@@ -292,7 +280,7 @@ void coreGame::renderPlane(char guessedChar, int num) {
         SDL->createImageBackground("hang0.png");
         SDL->createImage("plane.png", i, 0);
         SDL->createTextTexture(string("There ") + (num == 1 ? "is " : "are ") + to_string(num) + " of " + guessedChar, i + 165, 215);
-        SDL->createTextTexture("Press 'Space' to skip", 300, 850);
+        SDL->createTextTexture("Press 'Space' to skip", 550, 850);
         SDL->updateScreen();
         i += 5;
     }
@@ -436,10 +424,10 @@ void coreGame::hint() {
 
 void coreGame::renderGameSDL() {
     SDL->createImageBackground("hang" + to_string(badGuessCount) + ".png");
-    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 750, 5);
-    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
+    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 1200, 5);
+    SDL->createTextTexture("Win  : " + to_string(win), 1200, 45);
+    SDL->createTextTexture("Loss : " + to_string(loss), 1200, 85);
+    SDL->createTextTexture("Score: " + to_string(score), 1200, 125);
     SDL->createTextTexture("Current Guess    :     " + guessedWord, 100, 750);
     SDL->createTextTexture("Bad Guesses      :     " + badGuess, 100, 800);
     SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + "   (Press 'Space')", 100, 850);
@@ -452,11 +440,11 @@ void coreGame::renderGameOverSDL(int imageIndex) {
     SDL->createImageBackground(status + to_string(imageIndex) + ".png");
     
     if (timeLeft <= 0)
-        SDL->createTextTexture("Time Up!!!", 750, 5);
+        SDL->createTextTexture("Time Up!!!", 1200, 5);
     
-    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
+    SDL->createTextTexture("Win  : " + to_string(win), 1200, 45);
+    SDL->createTextTexture("Loss : " + to_string(loss), 1200, 85);
+    SDL->createTextTexture("Score: " + to_string(score), 1200, 125);
     
     if (guessedWord == word)
         SDL->createTextTexture("Congrats!!! You are free.", 100, 750);
@@ -503,6 +491,8 @@ void coreGame::checkContinue(SDL_Event e) {
             quit = true;
             if(is_highScore())
                 nameHighScore();
+            else
+                continue;
         }
         else if (e.type == SDL_KEYUP && (e.key.keysym.sym == SDLK_RETURN ||e.key.keysym.sym == SDLK_RETURN2 ||e.key.keysym.sym == SDLK_KP_ENTER)) {
             playing = true;

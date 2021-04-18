@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int SCREEN_WIDTH = 950;           // SDL window width
+const int SCREEN_WIDTH = 1440;           // SDL window width
 const int SCREEN_HEIGHT = 900;          // SDL window height
 const string WINDOW_TITLE = "Hangman";  // SDL window title
 
