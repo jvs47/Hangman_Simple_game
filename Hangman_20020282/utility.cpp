@@ -111,6 +111,11 @@ bool cmp(const playerScore& p1, const playerScore& p2)
     return p1.score < p2.score;
 }
 
+bool cmp2(const playerScore& p1, const playerScore& p2)
+{
+    return p1.score > p2.score;
+}
+
 vector<playerScore> getHighScore()
 {
     vector<playerScore> p(0);
@@ -142,7 +147,7 @@ vector<playerScore> getHighScore()
         playerScore p1 = playerScore(_playerName, _score, _timeplayed, _win, _loss, _recored);
         p.push_back(p1);
     }
-    sort(p.begin(), p.end(), cmp);
+    sort(p.begin(), p.end(), cmp2);
     return p;
 }
 

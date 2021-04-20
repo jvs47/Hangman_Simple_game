@@ -12,8 +12,8 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
-const int SCREEN_WIDTH = 950;           // SDL window width
-const int SCREEN_HEIGHT = 900;          // SDL window height
+const int SCREEN_WIDTH = 300;           // SDL window width
+const int SCREEN_HEIGHT = 200;          // SDL window height
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
@@ -195,7 +195,7 @@ bool init()
         }
 
         //Create window
-        gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( "Congratulation!!!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( gWindow == NULL )
         {
             printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -387,8 +387,8 @@ std::string stringInput()
                 SDL_RenderClear( gRenderer );
 
                 //Render text textures
-                gPromptTextTexture.render( ( SCREEN_WIDTH - gPromptTextTexture.getWidth() ) / 2, 0 );
-                gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2, gPromptTextTexture.getHeight() );
+                gPromptTextTexture.render( ( SCREEN_WIDTH - gPromptTextTexture.getWidth() ) / 2, ( SCREEN_HEIGHT - 5*gPromptTextTexture.getHeight() ) / 2 );
+                gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2,   (SCREEN_HEIGHT - gPromptTextTexture.getHeight())/2 );
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );

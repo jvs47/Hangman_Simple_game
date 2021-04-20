@@ -13,6 +13,7 @@
 		2D1D14442622B7AB00FD304A /* libSDL2_ttf-2.0.0.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = 2D1D14422622B7AA00FD304A /* libSDL2_ttf-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2D1D14472622EFE600FD304A /* SkickSDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D1D14452622EFE600FD304A /* SkickSDL.cpp */; };
 		2D1D14492622F31100FD304A /* libSDL2_image-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1D14482622F31100FD304A /* libSDL2_image-2.0.0.dylib */; };
+		2D611E91262D20EB00B2D2B0 /* AIplayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D611E8F262D20EB00B2D2B0 /* AIplayer.cpp */; };
 		2DA6C9DC2624657B003A3077 /* coreGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6C9DA2624657B003A3077 /* coreGame.cpp */; };
 		2DED06CE262604AF0078ADF2 /* stringInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DED06CC262604AF0078ADF2 /* stringInput.cpp */; };
 		2DF42DCD2622AC8300E0B3A7 /* painter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF42DCB2622AC8300E0B3A7 /* painter.cpp */; };
@@ -50,6 +51,8 @@
 		2D1D14452622EFE600FD304A /* SkickSDL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SkickSDL.cpp; sourceTree = "<group>"; };
 		2D1D14462622EFE600FD304A /* SkickSDL.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SkickSDL.hpp; sourceTree = "<group>"; };
 		2D1D14482622F31100FD304A /* libSDL2_image-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_image-2.0.0.dylib"; path = "../../../../usr/local/Cellar/sdl2_image/2.0.5/lib/libSDL2_image-2.0.0.dylib"; sourceTree = "<group>"; };
+		2D611E8F262D20EB00B2D2B0 /* AIplayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AIplayer.cpp; sourceTree = "<group>"; };
+		2D611E90262D20EB00B2D2B0 /* AIplayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AIplayer.hpp; sourceTree = "<group>"; };
 		2D826E60262438D30035AEFD /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		2DA6C9DA2624657B003A3077 /* coreGame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = coreGame.cpp; sourceTree = "<group>"; };
 		2DA6C9DB2624657B003A3077 /* coreGame.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = coreGame.hpp; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 		2DF74623261B59CC00E2A4C8 /* Hangman_20020282 */ = {
 			isa = PBXGroup;
 			children = (
+				2D611E8F262D20EB00B2D2B0 /* AIplayer.cpp */,
+				2D611E90262D20EB00B2D2B0 /* AIplayer.hpp */,
 				2DA6C9DA2624657B003A3077 /* coreGame.cpp */,
 				2DA6C9DB2624657B003A3077 /* coreGame.hpp */,
 				2DA99A4326201E0300027B34 /* Dictionary */,
@@ -191,6 +196,7 @@
 				2D1D14472622EFE600FD304A /* SkickSDL.cpp in Sources */,
 				2DA6C9DC2624657B003A3077 /* coreGame.cpp in Sources */,
 				2DF42DCD2622AC8300E0B3A7 /* painter.cpp in Sources */,
+				2D611E91262D20EB00B2D2B0 /* AIplayer.cpp in Sources */,
 				2DED06CE262604AF0078ADF2 /* stringInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
