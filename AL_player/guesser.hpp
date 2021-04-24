@@ -51,6 +51,8 @@ public:
     int getIncorrectGuess() const { return incorrectGuess; }
     set<char> getPreviousGuesses() const { return previousGuesses; }
     string getSecretWord() const { return secretWord; }
+    bool isGuessing();
+    void gameOver();
     void renderGameSDL();               // render playing game window
     void renderGameOverSDL(int);        // render game over window
     void createGameOverSDL();           // initialize game over loop for rendering

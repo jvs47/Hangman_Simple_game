@@ -124,7 +124,6 @@ string Guesser::getUserAnswer(char guess)
     return answer;
 }
 
-
 void Guesser::receiveHostAnswer(char guess, const std::string& mask)
 {
     if (!isGoodMask(guess, mask))
@@ -160,6 +159,11 @@ void Guesser::updateSecretWord(const string& mask)
             secretWord[i] = mask[i];
 }
 
+bool Guesser::isGuessing()
+{
+    return incorrectGuess < MAX_GUESSES  && playing && guess!=0;
+}
+
 char Guesser::getNextGuess()
 {
     set<char> remainingChars = getRemainingChars(previousGuesses);
@@ -186,6 +190,11 @@ void Guesser::renderGameSDL() {
     SDL->createTextTexture("Secret Word      :     " + secretWord, 100, 800);
     SDL->updateScreen();
     SDL_Delay(10);
+}
+
+void Guesser::gameOver()
+{
+    createGameOverSDL();
 }
 
 void Guesser::renderGameOverSDL(int imageIndex) {
