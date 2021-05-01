@@ -37,7 +37,7 @@ void coreGame::welcome()
 void coreGame::renderWelcome()
 {
     SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("WELCOME TO HANGMAN", 100, 50);
+    SDL->createTextTexture("PLAYER MODE", 100, 50);
     SDL->createTextTexture("1. New game", 150, 100);
     SDL->createTextTexture("2. High score", 150, 150);
     SDL->createTextTexture("3. How to play", 150, 200);

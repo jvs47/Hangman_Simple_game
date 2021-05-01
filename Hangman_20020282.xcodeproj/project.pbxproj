@@ -19,6 +19,7 @@
 		2DA479B1263D3E830048E18B /* SkickSDL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA479A9263D3E830048E18B /* SkickSDL.cpp */; };
 		2DA479B7263D3EA20048E18B /* guesser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA479B5263D3EA20048E18B /* guesser.cpp */; };
 		2DA479B8263D3EA20048E18B /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA479B3263D3EA20048E18B /* util.cpp */; };
+		2DA479BC263D53720048E18B /* mode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DA479BA263D53720048E18B /* mode.cpp */; };
 		2DF74625261B59CC00E2A4C8 /* hangman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DF74624261B59CC00E2A4C8 /* hangman.cpp */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,8 @@
 		2DA479B4263D3EA20048E18B /* guesser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = guesser.hpp; sourceTree = "<group>"; };
 		2DA479B5263D3EA20048E18B /* guesser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = guesser.cpp; sourceTree = "<group>"; };
 		2DA479B6263D3EA20048E18B /* util.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = util.hpp; sourceTree = "<group>"; };
+		2DA479BA263D53720048E18B /* mode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mode.cpp; sourceTree = "<group>"; };
+		2DA479BB263D53720048E18B /* mode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mode.hpp; sourceTree = "<group>"; };
 		2DA99A4326201E0300027B34 /* Dictionary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dictionary; sourceTree = "<group>"; };
 		2DC4E90C2627517B00480FED /* Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Font; sourceTree = "<group>"; };
 		2DED06A926254B320078ADF2 /* Score */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Score; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				2DED06A926254B320078ADF2 /* Score */,
 				2DF74624261B59CC00E2A4C8 /* hangman.cpp */,
 				2DA479B5263D3EA20048E18B /* guesser.cpp */,
+				2DA479BA263D53720048E18B /* mode.cpp */,
+				2DA479BB263D53720048E18B /* mode.hpp */,
 				2DA479B4263D3EA20048E18B /* guesser.hpp */,
 				2DA479B3263D3EA20048E18B /* util.cpp */,
 				2DA479B6263D3EA20048E18B /* util.hpp */,
@@ -198,6 +203,7 @@
 			files = (
 				2DA479B7263D3EA20048E18B /* guesser.cpp in Sources */,
 				2DA479A6263D3E3B0048E18B /* utility.cpp in Sources */,
+				2DA479BC263D53720048E18B /* mode.cpp in Sources */,
 				2DF74625261B59CC00E2A4C8 /* hangman.cpp in Sources */,
 				2DA479A7263D3E3B0048E18B /* coreGame.cpp in Sources */,
 				2DA479B0263D3E830048E18B /* painter.cpp in Sources */,
