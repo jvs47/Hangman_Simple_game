@@ -236,7 +236,7 @@ bool init()
     return success;
 }
 
-bool loadMedia()
+bool loadMedia(std::string heading)
 {
     //Loading success flag
     bool success = true;
@@ -252,7 +252,7 @@ bool loadMedia()
     {
         //Render the prompt
         SDL_Color textColor = { 0, 0, 0, 0xFF };
-        if( !gPromptTextTexture.loadFromRenderedText( "New High Score:", textColor ) )
+        if( !gPromptTextTexture.loadFromRenderedText( heading, textColor ) )
         {
             printf( "Failed to render prompt text!\n" );
             success = false;
@@ -281,10 +281,10 @@ void close()
     //Quit SDL subsystems
     TTF_Quit();
     IMG_Quit();
-    SDL_Quit();
+    //SDL_Quit();
 }
 
-std::string stringInput()
+std::string stringInput(std::string heading, std::string inputText)
 {
     //Start up SDL and create window
     if( !init() )
@@ -294,7 +294,7 @@ std::string stringInput()
     else
     {
         //Load media
-        if( !loadMedia() )
+        if( !loadMedia(heading) )
         {
             printf( "Failed to load media!\n" );
         }
@@ -310,7 +310,6 @@ std::string stringInput()
             SDL_Color textColor = { 0, 0, 0, 0xFF };
 
             //The current input text.
-            std::string inputText = "Input Your Name";
             gInputTextTexture.loadFromRenderedText( inputText.c_str(), textColor );
 
             //Enable text input
@@ -396,7 +395,7 @@ std::string stringInput()
             
             //Disable text input
             SDL_StopTextInput();
-            return inputText;
+            
         }
         
     }
@@ -404,6 +403,6 @@ std::string stringInput()
     //Free resources and close SDL
     close();
 
-    return "";
+    return inputText;
 }
 

@@ -478,7 +478,7 @@ bool coreGame::is_highScore()
 }
 void coreGame::nameHighScore()
 {
-    playerName = stringInput();
+    playerName = stringInput("New High Score: ", "intput name");
     date_time = getTime();
     timeplayed();
     storeHighScore(playerName, score, timePlayed, win, loss, date_time);

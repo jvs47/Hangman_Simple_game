@@ -66,10 +66,10 @@ class LTexture
 bool init();
 
 //Loads media
-bool loadMedia();
+bool loadMedia(std::string);
 
 //Frees media and shuts down SDL
 void close();
 
-std::string stringInput();
+std::string stringInput(std::string, std::string);
 #endif /* stringInput_hpp */
