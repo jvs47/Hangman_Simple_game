@@ -31,6 +31,7 @@ void coreGame::welcome()
         renderWelcome();
         handleWelcomeEvent();
         highScore();
+        howtoPlay();
     }
 }
 
@@ -84,6 +85,15 @@ void coreGame::handleWelcomeEvent()
                         break;
                 }
         }
+    }
+}
+
+void coreGame::howtoPlay()
+{
+    if(selection == 2)
+    {
+        system("open https://www.youtube.com/watch?v=leW9ZotUVYo&ab_channel=wikiHow");
+        selection = -1;
     }
 }
 

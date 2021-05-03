@@ -25,15 +25,17 @@ struct playerScore
     
 };
 
-std::string normalize(const std::string s);
-std::string chooseWord(const std::string fileName, int level);
-bool contains(std::string word, char guess);
-void storeHighScore(std::string playerName, int score, int timeplayed, int win, int loss, std::string date_time);
-int calScore(int level, int suggested);
+std::string normalize(const std::string);
+std::string chooseWord(const std::string, int);
+bool contains(std::string, char);
+void storeHighScore(std::string, int, int, int, int, std::string);
+int calScore(int, int);
 
 std::vector<playerScore> getHighScore();
 int maxHighScore();
 std::string getTime();
+bool cmp(const playerScore&, const playerScore&);
+bool cmp2(const playerScore&, const playerScore&);
 
-std::string paddingStr(const playerScore &p, int &i);
+std::string paddingStr(const playerScore&, int&);
 #endif /* utility_hpp */

@@ -47,14 +47,15 @@ private:
     
 public:
     bool playing;                       // Game is playing or not
-    coreGame(SkickSDL*);           // initialize Game
+    coreGame(SkickSDL*);                // initialize Game
     void startGame();                   // initialize new Game
-    void welcome();
-    void renderWelcome();
-    void handleWelcomeEvent();
-    void highScore();
-    void renderHighscore();
-    void handleHighscore();
+    void welcome();                     // welcome
+    void renderWelcome();               // render welcome window
+    void handleWelcomeEvent();          // handle welcome event
+    void highScore();                   // highScore
+    void renderHighscore();             // render highScore window
+    void handleHighscore();             // handle highScore event
+    void howtoPlay();                   // how to Play game
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event

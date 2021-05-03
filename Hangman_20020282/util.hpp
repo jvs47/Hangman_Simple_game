@@ -14,12 +14,12 @@
 #include <vector>
 #include <string>
 
-std::string normalizeWord(const std::string s);
-int generateRandomNumber(int min, int max);
-bool isCharInWord(char ch, std::string word);
-std::vector<std::string> readWordListFromFile(const std::string& filePath);
-bool isAllDash(const std::string& s);
-bool isAllNotDash(const std::string& s);
+std::string normalizeWord(const std::string);
+int generateRandomNumber(int, int);
+bool isCharInWord(char, std::string);
+std::vector<std::string> readWordListFromFile(const std::string&);
+bool isAllDash(const std::string&);
+bool isAllNotDash(const std::string&);
 void clearScreen();
 
 #endif /* util_hpp */
