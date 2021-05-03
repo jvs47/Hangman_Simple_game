@@ -108,12 +108,12 @@ playerScore::playerScore(std::string _n, int _s, int _t, int _w, int _l, std::st
 
 bool cmp(const playerScore& p1, const playerScore& p2)
 {
-    return p1.score < p2.score;
+    return p1.score <= p2.score;
 }
 
 bool cmp2(const playerScore& p1, const playerScore& p2)
 {
-    return p1.score > p2.score;
+    return p1.score >= p2.score;
 }
 
 vector<playerScore> getHighScore()
@@ -184,6 +184,6 @@ string paddingStr(const playerScore &p, int &i)
     loss.insert(loss.begin(), 4-loss.length(), ' ');
     string recored = p.recored;
     recored.insert(recored.begin(), 30-recored.length(), ' ');
-    string _re = _i + ' ' +name + ' '+score + ' '+time + ' '+win + ' '+loss +' '+recored;
+    string _re = _i + ' ' +name + ' '+score + ' '+time + ' '+win + ' '+loss ;
     return _re;
 }

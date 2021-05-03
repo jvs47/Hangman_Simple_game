@@ -63,7 +63,7 @@ class LTexture
 };
 
 //Starts up SDL and creates window
-bool init();
+bool init(const char*);
 
 //Loads media
 bool loadMedia(std::string);
@@ -71,5 +71,5 @@ bool loadMedia(std::string);
 //Frees media and shuts down SDL
 void close();
 
-std::string stringInput(std::string, std::string);
+std::string stringInput(const char*, std::string, std::string);
 #endif /* stringInput_hpp */

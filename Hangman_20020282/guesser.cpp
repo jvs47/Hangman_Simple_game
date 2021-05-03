@@ -120,9 +120,10 @@ void Guesser::inputWordlength()
 
 void Guesser::renderWordlength()
 {
-    SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("Choose word length:", 100, 50);
-    SDL->createTextTexture("WordLength          :     " + to_string(wordLength), 100, 750);
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("Choose word length:", 510, 350);
+    SDL->createTextTexture("WordLength: " + to_string(wordLength), 570, 400);
+    SDL->createTextTexture("(Press 3~9 from keyboard)", 470, 550);
     SDL->updateScreen();
 }
 
@@ -130,12 +131,7 @@ void Guesser::handleWordlength()
 {
     SDL_Event event;
     if (SDL_WaitEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-            playing = false;
-            quit = true;
-        } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
-            playing = false;
-        } else if (event.type == SDL_KEYUP) {
+         if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
             if (keyName.length() == 1 && keyName[0] >= '3' && keyName[0] <= '9'){
                 wordLength = keyName[0] - '0';
@@ -148,7 +144,10 @@ string Guesser::getUserAnswer(char guess)
 {
     string answer;
     cout << endl << "I guess " << guess<< ", please enter your mask: ";
-    answer = stringInput("Please enter mask:","mask");
+    string title = "I guess ";
+    title += guess;
+    const char* _title = &title[0];
+    answer = stringInput(_title,"Please enter mask:","mask");
     transform(answer.begin(), answer.end(), answer.begin(), ::tolower);
     return answer;
 }
@@ -209,9 +208,6 @@ void Guesser::renderGameSDL(char guess) {
     {
         guessedWord+=c;
     }
-    string to_guess = "I guess ";
-    to_guess.push_back(guess);
-    SDL->createTextTexture(to_guess, 1200, 300);
     SDL->createTextTexture("WordLength          :     " + to_string(wordLength), 100, 750);
     SDL->createTextTexture("Previous Guesses    :     " + guessedWord, 100, 800);
      
@@ -257,7 +253,7 @@ void Guesser::renderGameOverSDL(int imageIndex) {
 //        SDL->createTextTexture("Time Up!!!", 1200, 5);
     bool isLosing = (incorrectGuess == MAX_GUESSES);
     
-    string status = (isLosing ? "free" : "hanged");
+    string status = (!isLosing ? "free" : "hanged");
     
     SDL->createImageBackground(status + to_string(imageIndex) + ".png");
     
@@ -281,7 +277,7 @@ void Guesser::createGameOverSDL() {
         SDL_Event e;
         checkContinue(e);
         renderGameOverSDL(imageIndex);
-        SDL_Delay(200);
+        SDL_Delay(180);
         ++imageIndex %= 4;
     }
 }

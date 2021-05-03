@@ -17,7 +17,6 @@ using namespace std;
 
 coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
     playing = true;
-    selection = -1;
     win = 0;
     loss = 0;
     score = 0;
@@ -26,6 +25,7 @@ coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
 
 void coreGame::welcome()
 {
+    selection = -1;
     while(selection == -1 && playing && !quit)
     {
         renderWelcome();
@@ -36,12 +36,12 @@ void coreGame::welcome()
 
 void coreGame::renderWelcome()
 {
-    SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("PLAYER MODE", 100, 50);
-    SDL->createTextTexture("1. New game", 150, 100);
-    SDL->createTextTexture("2. High score", 150, 150);
-    SDL->createTextTexture("3. How to play", 150, 200);
-    SDL->createTextTexture("Press ESC to Quit", 150, 400);
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("__PLAYER MODE__", 500, 150);
+    SDL->createTextTexture("1. New game", 500, 300);
+    SDL->createTextTexture("2. High score", 500, 350);
+    SDL->createTextTexture("3. How to play", 500, 400);
+    SDL->createTextTexture("Press ESC to Quit", 500, 600);
     SDL->updateScreen();
 }
 
@@ -87,7 +87,7 @@ void coreGame::handleWelcomeEvent()
 
 void coreGame::startGame() {
     quit = false;
-    system("clear");
+    //system("clear");
     chooseCategory();
     chooseLevel();
     initWord();
@@ -118,17 +118,17 @@ void coreGame::highScore()
 void coreGame::renderHighscore()
 {
     SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("____HIGH SCORE___", 100, 50);
-    SDL->createTextTexture("Rank PlayerName Score Times Win Loss                   Time_recored", 80, 100);
+    SDL->createTextTexture("____HIGH SCORE___", 300, 50);
+    SDL->createTextTexture("Rank PlayerName Score Times Win Loss                   Time_recored", 150, 200);
     vector<playerScore> p = getHighScore();
     unsigned long n =  p.size();
     for(int i = 1; i<=n; i++)
     {
         playerScore p1 = p[i-1];
         string line = paddingStr(p1, i);
-        SDL->createTextTexture(line, 80, 100+50*i);
+        SDL->createTextTexture(line, 150, 200+50*i);
     }
-    SDL->createTextTexture("Press Enter to go back, ESC to Quit", 150, 400);
+    SDL->createTextTexture("Press Enter to go back, ESC to Quit", 180, 800);
     SDL->updateScreen();
 }
 
@@ -152,7 +152,7 @@ void coreGame::handleHighscore()
 
 void coreGame::chooseCategory() {
     category = "";
-    while (category == "" && playing && !quit && selection==0) {
+    while (category == "" && playing && !quit && selection == 0) {
         renderCategory();
         chooseCategoryEvent();
     }
@@ -204,21 +204,21 @@ void coreGame::chooseCategoryEvent() {
 }
 
 void coreGame::renderCategory() {
-    SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("Choose word category:", 100, 50);
-    SDL->createTextTexture("1. Animals", 150, 100);
-    SDL->createTextTexture("2. City", 150, 150);
-    SDL->createTextTexture("3. Clothes", 150, 200);
-    SDL->createTextTexture("4. Jobs", 150, 250);
-    SDL->createTextTexture("5. Fruits", 150, 300);
-    SDL->createTextTexture("6. Evironment", 150, 350);
-    SDL->createTextTexture("5. Family", 150, 400);
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("Choose word category:", 500, 150);
+    SDL->createTextTexture("1. Animals", 550, 250);
+    SDL->createTextTexture("2. City", 550, 300);
+    SDL->createTextTexture("3. Clothes", 550, 350);
+    SDL->createTextTexture("4. Jobs", 550, 400);
+    SDL->createTextTexture("5. Fruits", 550, 450);
+    SDL->createTextTexture("6. Evironment", 550, 500);
+    SDL->createTextTexture("5. Family", 550, 550);
     SDL->updateScreen();
 }
 
 void coreGame::chooseLevel() {
     level = -1;
-    while (level == -1 && playing && !quit) {
+    while (level == -1 && playing && !quit && selection == 0) {
         renderLevel();
         chooseLevelEvent();
     }
@@ -260,12 +260,12 @@ void coreGame::chooseLevelEvent() {
 }
 
 void coreGame::renderLevel() {
-    SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("Category: " + catName, 100, 50);
-    SDL->createTextTexture("Choose word Level:", 100, 100);
-    SDL->createTextTexture("1. Easy", 150, 150);
-    SDL->createTextTexture("2. Hard", 150, 200);
-    SDL->createTextTexture("3. Hell (Zero try)", 150, 250);
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("Category: " + catName, 500, 150);
+    SDL->createTextTexture("Choose word Level:", 500, 200);
+    SDL->createTextTexture("1. Easy", 550, 300);
+    SDL->createTextTexture("2. Hard", 550, 350);
+    SDL->createTextTexture("3. Hell (Zero try)", 550, 400);
     SDL->updateScreen();
 }
 
@@ -280,7 +280,7 @@ void coreGame::renderPlane(char guessedChar, int num) {
         SDL->createImageBackground("hang0.png");
         SDL->createImage("plane.png", i, 0);
         SDL->createTextTexture(string("There ") + (num == 1 ? "is " : "are ") + to_string(num) + " of " + guessedChar, i + 165, 215);
-        SDL->createTextTexture("Press 'Space' to skip", 550, 850);
+        SDL->createTextTexture("Press 'Space' to skip", 300, 850);
         SDL->updateScreen();
         i += 5;
     }
@@ -424,10 +424,10 @@ void coreGame::hint() {
 
 void coreGame::renderGameSDL() {
     SDL->createImageBackground("hang" + to_string(badGuessCount) + ".png");
-    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 1200, 5);
-    SDL->createTextTexture("Win  : " + to_string(win), 1200, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 1200, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 1200, 125);
+    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 750, 5);
+    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
+    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
+    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
     SDL->createTextTexture("Current Guess    :     " + guessedWord, 100, 750);
     SDL->createTextTexture("Bad Guesses      :     " + badGuess, 100, 800);
     SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + "   (Press 'Space')", 100, 850);
@@ -440,11 +440,11 @@ void coreGame::renderGameOverSDL(int imageIndex) {
     SDL->createImageBackground(status + to_string(imageIndex) + ".png");
     
     if (timeLeft <= 0)
-        SDL->createTextTexture("Time Up!!!", 1200, 5);
+        SDL->createTextTexture("Time Up!!!", 750, 5);
     
-    SDL->createTextTexture("Win  : " + to_string(win), 1200, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 1200, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 1200, 125);
+    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
+    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
+    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
     
     if (guessedWord == word)
         SDL->createTextTexture("Congrats!!! You are free.", 100, 750);
@@ -464,7 +464,7 @@ void coreGame::createGameOverSDL() {
         SDL_Event e;
         checkContinue(e);
         renderGameOverSDL(imageIndex);
-        SDL_Delay(200);
+        SDL_Delay(180);
         ++imageIndex %= 4;
     }
 }
@@ -472,13 +472,13 @@ void coreGame::createGameOverSDL() {
 bool coreGame::is_highScore()
 {
     int maxScore = maxHighScore();
-    if(score>maxScore)
+    if(score>=maxScore)
         return 1;
     return 0;
 }
 void coreGame::nameHighScore()
 {
-    playerName = stringInput("New High Score: ", "intput name");
+    playerName = stringInput("Congratulation!!!","New High Score: ", "intput name");
     date_time = getTime();
     timeplayed();
     storeHighScore(playerName, score, timePlayed, win, loss, date_time);

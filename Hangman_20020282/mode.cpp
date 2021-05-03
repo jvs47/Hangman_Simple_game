@@ -24,12 +24,12 @@ void gameMode::modeGame()
 
 void gameMode::renderMode()
 {
-    SDL->createImageBackground("hang0.png");
-    SDL->createTextTexture("WELCOME TO HANGMAN", 100, 50);
-    SDL->createTextTexture("Select game Mode:", 150, 100);
-    SDL->createTextTexture("1. Man player", 150, 150);
-    SDL->createTextTexture("2. COM player", 150, 200);
-    SDL->createTextTexture("Press ESC to Quit", 150, 400);
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("WELCOME TO HANGMAN", 500, 150);
+    SDL->createTextTexture("Select game Mode:", 550, 300);
+    SDL->createTextTexture("1. Man player", 550, 350);
+    SDL->createTextTexture("2. COM player", 550, 400);
+    SDL->createTextTexture("Press ESC to Quit", 500, 675);
     SDL->updateScreen();
 }
 
