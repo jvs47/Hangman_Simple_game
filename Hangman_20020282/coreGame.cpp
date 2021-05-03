@@ -26,7 +26,7 @@ coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
 void coreGame::welcome()
 {
     selection = -1;
-    while(selection == -1 && playing && !quit)
+    while( playing && !quit && selection == -1)
     {
         renderWelcome();
         handleWelcomeEvent();
@@ -53,10 +53,13 @@ void coreGame::handleWelcomeEvent()
             playing = false;
             quit = true;
         } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
-            playing = false;
+            {
+                playing = false;
+                selection = -1;
+            }
         } else if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '5')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
                 switch (keyName[0]) {
                     case '1':
                     {
@@ -84,10 +87,11 @@ void coreGame::handleWelcomeEvent()
     }
 }
 
-
 void coreGame::startGame() {
     quit = false;
     //system("clear");
+    selection = -1;
+    welcome();
     chooseCategory();
     chooseLevel();
     initWord();
@@ -108,7 +112,7 @@ void coreGame::startGame() {
 
 void coreGame::highScore()
 {
-    while(selection==1 && playing && !quit)
+    while(selection == 1 && playing && !quit)
     {
         renderHighscore();
         handleHighscore();
@@ -148,7 +152,6 @@ void coreGame::handleHighscore()
         }
     }
 }
-
 
 void coreGame::chooseCategory() {
     category = "";
@@ -423,16 +426,20 @@ void coreGame::hint() {
 }
 
 void coreGame::renderGameSDL() {
-    SDL->createImageBackground("hang" + to_string(badGuessCount) + ".png");
-    SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 750, 5);
-    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
-    SDL->createTextTexture("Current Guess    :     " + guessedWord, 100, 750);
-    SDL->createTextTexture("Bad Guesses      :     " + badGuess, 100, 800);
-    SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + "   (Press 'Space')", 100, 850);
-    SDL->updateScreen();
-    SDL_Delay(10);
+    if(playing)
+    {
+        SDL->createImageBackground("hang" + to_string(badGuessCount+1) + ".png");
+        SDL->createTextTexture("Time : " + to_string(timeLeft) +"s", 740, 5);
+        SDL->createTextTexture("Win  : " + to_string(win), 740, 45);
+        SDL->createTextTexture("Loss : " + to_string(loss), 740, 85);
+        SDL->createTextTexture("Score: " + to_string(score), 740, 125);
+        SDL->createTextTexture("Current Guess    :     " + guessedWord, 100, 750);
+        SDL->createTextTexture("Bad Guesses      :     " + badGuess, 100, 800);
+        SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + "   (Press 'Space')", 100, 850);
+        SDL->updateScreen();
+        SDL_Delay(10);
+        
+    }
 }
 
 void coreGame::renderGameOverSDL(int imageIndex) {
@@ -440,11 +447,11 @@ void coreGame::renderGameOverSDL(int imageIndex) {
     SDL->createImageBackground(status + to_string(imageIndex) + ".png");
     
     if (timeLeft <= 0)
-        SDL->createTextTexture("Time Up!!!", 750, 5);
+        SDL->createTextTexture("Time Up!!!", 740, 5);
     
-    SDL->createTextTexture("Win  : " + to_string(win), 750, 45);
-    SDL->createTextTexture("Loss : " + to_string(loss), 750, 85);
-    SDL->createTextTexture("Score: " + to_string(score), 750, 125);
+    SDL->createTextTexture("Win  : " + to_string(win), 740, 45);
+    SDL->createTextTexture("Loss : " + to_string(loss), 740, 85);
+    SDL->createTextTexture("Score: " + to_string(score), 740, 125);
     
     if (guessedWord == word)
         SDL->createTextTexture("Congrats!!! You are free.", 100, 750);

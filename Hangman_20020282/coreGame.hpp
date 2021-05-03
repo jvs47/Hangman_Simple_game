@@ -18,8 +18,8 @@ using namespace std;
 // Hangman Game class
 class coreGame {
 private:
-    const int MAX_BAD_GUESS_Nor = 7;  // Max bad guess of Normal Game
-    const int MAX_BAD_GUESS_Hel = 1; // Max bad guess of Hard-core Game
+    const int MAX_BAD_GUESS_Nor = 6;  // Max bad guess of Normal Game
+    const int MAX_BAD_GUESS_Hel = 0; // Max bad guess of Hard-core Game
     string category;              // Name of category file
     string catName;               // Name of category title
     int selection = -1;

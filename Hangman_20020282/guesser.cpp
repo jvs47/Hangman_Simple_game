@@ -202,7 +202,7 @@ char Guesser::getNextGuess()
 }
 
 void Guesser::renderGameSDL(char guess) {
-    SDL->createImageBackground("hang" + to_string(incorrectGuess) + ".png");
+    SDL->createImageBackground("hang" + to_string(incorrectGuess+1) + ".png");
     string guessedWord="";
     for(auto c: previousGuesses)
     {

@@ -39,7 +39,7 @@ private:
     bool isSuitableWord(const string&, const string& , const set<char>&);
     vector<string> getSuitableWords(const vector<string>& , const string&, const set<char>& );
 public:
-    const int MAX_GUESSES = 7;
+    const int MAX_GUESSES = 6;
 public:
     bool playing;
     Guesser(SkickSDL*);
