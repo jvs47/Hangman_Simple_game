@@ -49,6 +49,8 @@ public:
     void renderWordlength();
     string getUserAnswer(char );
     void receiveHostAnswer(char , const string& );
+    void getMask(string&, char);
+    void handleMask(SDL_Event, string&, bool&, char);
     char getNextGuess();
 
     int getIncorrectGuess() const { return incorrectGuess; }

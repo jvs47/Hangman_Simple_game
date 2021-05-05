@@ -97,7 +97,8 @@ void coreGame::howtoPlay()
     }
 }
 
-void coreGame::startGame() {
+void coreGame::startGame()
+{
     quit = false;
     //system("clear");
     selection = -1;

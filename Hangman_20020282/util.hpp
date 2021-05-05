@@ -13,6 +13,7 @@
 
 #include <vector>
 #include <string>
+#include "SkickSDL.hpp"
 
 std::string normalizeWord(const std::string);
 int generateRandomNumber(int, int);
@@ -21,5 +22,7 @@ std::vector<std::string> readWordListFromFile(const std::string&);
 bool isAllDash(const std::string&);
 bool isAllNotDash(const std::string&);
 void clearScreen();
+
+std::string maskInput(SkickSDL*);
 
 #endif /* util_hpp */

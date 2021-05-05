@@ -61,6 +61,7 @@ int main(int argc, char* argv[]) {
                             cout << "Invalid mask, try again" << endl;
                         }
                     } while (true);
+                    //guesser->renderGameSDL(guess);
                 } while (!guesser->isStop());   //render game if com still guessing
                 if(guess == 0)
                     guesser->giveUp();          //com give up
