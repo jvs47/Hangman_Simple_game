@@ -10,11 +10,22 @@
 
 gameMode::gameMode(SkickSDL* SkickSDL): SDL(SkickSDL){
     running = true;
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+       {
+           cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << endl;
+       }
+    BackgroundMusic = Mix_LoadMUS("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/ambience_1.wav");
+    if(BackgroundMusic==NULL)
+        printf("Cant load bgMusic\n");
 }
 
 void gameMode::modeGame()
 {
     mode = -1;
+    if (!Mix_PlayingMusic())
+        {
+            Mix_PlayMusic(BackgroundMusic, -1);
+        }
     while(mode == -1 && running)
     {
         renderMode();

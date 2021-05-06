@@ -16,16 +16,29 @@
 using namespace std;
 
 coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+    {
+        printf("%s", Mix_GetError());
+    }
     playing = true;
     win = 0;
     loss = 0;
     score = 0;
     timePlayed = 0;
+    selection = -1;
+    
+
+    startSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/gong.wav");
+    correctSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/phew.wav");
+    incorrectSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/rope-tighten.wav");
+    deadSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/dead.wav");
+    aliveSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/yeehaw.wav");
+    
+
 }
 
 void coreGame::welcome()
 {
-    selection = -1;
     while( playing && !quit && selection == -1)
     {
         renderWelcome();
@@ -101,7 +114,7 @@ void coreGame::startGame()
 {
     quit = false;
     //system("clear");
-    selection = -1;
+
     welcome();
     chooseCategory();
     chooseLevel();
@@ -236,6 +249,7 @@ void coreGame::chooseLevel() {
         renderLevel();
         chooseLevelEvent();
     }
+    Mix_PlayChannel(1, startSFX, 0);
 }
 
 void coreGame::chooseLevelEvent() {
@@ -353,9 +367,12 @@ void coreGame::handleGuess() {
     else if (contains(word, guessChar)) {
         updateGuessedWord();
         updateHint();
+        Mix_PlayChannel(1, correctSFX, 0);
     } else if (!contains(badGuess, guessChar)) {
         badGuessed();
         renderPlane(guessChar, 0);
+        if(badGuessCount<MAX_BAD_GUESS_Nor)
+        Mix_PlayChannel(1, incorrectSFX, 0);
     }
 }
 
@@ -382,10 +399,16 @@ void coreGame::updateTime() {
 
 void coreGame::gameOver() {
     if (guessedWord != word)
-        loss++;
+        {
+            loss++;
+            if(!quit)
+            Mix_PlayChannel(1, deadSFX, 0);
+        }
     else
     {   win++;
         score += calScore(level,suggested);
+        if(!quit)
+        Mix_PlayChannel(1, aliveSFX, 0);
     }
     createGameOverSDL();
 }

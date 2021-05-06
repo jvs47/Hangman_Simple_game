@@ -81,6 +81,14 @@ public:
     void nameHighScore();               // store player name high score
     void renderPlane(char, int);        // render flying plane
     void planeEvent(SDL_Event, bool&);  // handle event while the plane is flying
+
+private:
+
+    Mix_Chunk* startSFX;                //start SFX;
+    Mix_Chunk* correctSFX;
+    Mix_Chunk* incorrectSFX;
+    Mix_Chunk* deadSFX;
+    Mix_Chunk* aliveSFX;
 };
 
 #endif /* coreGame_hpp */

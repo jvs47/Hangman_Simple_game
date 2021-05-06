@@ -95,11 +95,18 @@ Guesser::Guesser(SkickSDL* SkickSDL): SDL(SkickSDL)
 {
     playing = true;
     wordList = readWordListFromFile("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Dictionary/COM_player.txt");
+    startSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/gong.wav");
+    correctSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/phew.wav");
+    incorrectSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/rope-tighten.wav");
+    deadSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/dead.wav");
+    aliveSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/yeehaw.wav");
+    
 }
 
 void Guesser::newGame()
 {
     quit = false;
+    wordLength = 0;
     inputWordlength();
     secretWord = string(wordLength, '-');
     incorrectGuess = 0;
@@ -109,13 +116,13 @@ void Guesser::newGame()
 
 void Guesser::inputWordlength()
 {
-    wordLength = 0;
-    while(playing && !quit && !stop && wordLength==0)
+    
+    while(playing && !quit && wordLength==0)
     {
         renderWordlength();
         handleWordlength();
     }
-    
+    Mix_PlayChannel(1, startSFX, 0);
 }
 
 void Guesser::renderWordlength()
@@ -144,10 +151,6 @@ string Guesser::getUserAnswer(char guess)
 {
     string answer;
     cout << endl << "I guess " << guess<< ", please enter your mask: ";
-    //    string title = "I guess ";
-    //    title += guess;
-    //    const char* _title = &title[0];
-    //    answer = stringInput(_title,"Please enter mask:","mask");
     getMask(answer, guess);
     transform(answer.begin(), answer.end(), answer.begin(), ::tolower);
     return answer;
@@ -161,10 +164,22 @@ void Guesser::receiveHostAnswer(char guess, const std::string& m)
     previousGuesses.insert(guess);
     if (isAllDash(m)) {
         incorrectGuess ++;
-        if (incorrectGuess == MAX_GUESSES) stop = true;
+        if (incorrectGuess == MAX_GUESSES)
+        {
+            stop = true;
+            Mix_PlayChannel(1, deadSFX, 0);
+        }
+        else
+            Mix_PlayChannel(1, incorrectSFX, 0);
+        
     } else {
         updateSecretWord(m);
-        if (isAllNotDash(secretWord)) stop = true;
+        Mix_PlayChannel(1, correctSFX, 0);
+        if (isAllNotDash(secretWord))
+        {
+            stop = true;
+            Mix_PlayChannel(1, aliveSFX, 0);
+        }
     }
 }
 
@@ -341,6 +356,8 @@ void Guesser::rendergiveUpSDL(int imageIndex)
 void Guesser::creatgiveUpSDL()
 {
     int imageIndex = 0;
+    if(!quit)
+    Mix_PlayChannel(1, deadSFX, 0);
     while (!quit) {
         SDL_Event e;
         checkContinue(e);
@@ -402,6 +419,7 @@ void Guesser::checkContinue(SDL_Event e) {
         else if (e.type == SDL_KEYUP && (e.key.keysym.sym == SDLK_RETURN ||e.key.keysym.sym == SDLK_RETURN2 ||e.key.keysym.sym == SDLK_KP_ENTER)) {
             playing = true;
             quit = true;
+            stop = true;
         }
     }
 }

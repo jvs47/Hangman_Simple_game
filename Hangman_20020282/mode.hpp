@@ -14,6 +14,7 @@ class gameMode
 {
 private:
     SkickSDL* SDL;
+    Mix_Music* BackgroundMusic;         //bg music
 public:
     int mode;
     bool running;
