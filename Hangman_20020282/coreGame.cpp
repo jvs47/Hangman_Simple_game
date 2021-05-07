@@ -45,6 +45,7 @@ void coreGame::welcome()
         handleWelcomeEvent();
         highScore();
         howtoPlay();
+        options();
     }
 }
 
@@ -118,30 +119,6 @@ void coreGame::howtoPlay()
     }
 }
 
-void coreGame::startGame()
-{
-    quit = false;
-    //system("clear");
-
-    welcome();
-    chooseCategory();
-    chooseLevel();
-    initWord();
-    guessedWord = string(word.length(), '-');
-    guessChar = ' ';
-    badGuessCount = 0;
-    maxSuggest = 10;
-    badGuess = "";
-    suggested = 0;
-    guessedStr = "";
-    animatedTime = 0;
-    time(&startTime);
-    for (unsigned int i = 0; i < word.length(); i++)
-    if (word[i] == ' ')
-        guessedWord[i] = ' ';
-    updateHint();
-}
-
 void coreGame::highScore()
 {
     while(selection == 1 && playing && !quit)
@@ -183,6 +160,55 @@ void coreGame::handleHighscore()
             selection = -1;
         }
     }
+}
+
+void coreGame::options()
+{
+    while(selection == 3 && playing && !quit)
+    {
+        renderOptions();
+        handleOptions();
+    }
+}
+void coreGame::renderOptions()
+{
+    SDL->createImageBackground("intro.png");
+    SDL->createTextTexture("__OPTIONS__", 500, 150);
+    SDL->createTextTexture("1. Music:", 500, 300);
+    SDL->createTextTexture("2. SFX:", 500, 350);
+    SDL->createTextTexture("3. Volume:", 500, 400);
+
+    SDL->createTextTexture("Press Enter to Return", 500, 600);
+    SDL->updateScreen();
+}
+
+void coreGame::handleOptions()
+{
+    
+}
+
+void coreGame::startGame()
+{
+    quit = false;
+    //system("clear");
+
+    welcome();
+    chooseCategory();
+    chooseLevel();
+    initWord();
+    guessedWord = string(word.length(), '-');
+    guessChar = ' ';
+    badGuessCount = 0;
+    maxSuggest = 10;
+    badGuess = "";
+    suggested = 0;
+    guessedStr = "";
+    animatedTime = 0;
+    time(&startTime);
+    for (unsigned int i = 0; i < word.length(); i++)
+    if (word[i] == ' ')
+        guessedWord[i] = ' ';
+    updateHint();
 }
 
 void coreGame::chooseCategory() {

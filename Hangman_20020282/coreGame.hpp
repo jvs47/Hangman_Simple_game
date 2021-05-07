@@ -56,6 +56,9 @@ public:
     void renderHighscore();             // render highScore window
     void handleHighscore();             // handle highScore event
     void howtoPlay();                   // how to Play game
+    void options();
+    void renderOptions();
+    void handleOptions();
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
