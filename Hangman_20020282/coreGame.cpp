@@ -55,6 +55,7 @@ void coreGame::renderWelcome()
     SDL->createTextTexture("1. New game", 500, 300);
     SDL->createTextTexture("2. High score", 500, 350);
     SDL->createTextTexture("3. How to play", 500, 400);
+    SDL->createTextTexture("4. Options", 500, 450);
     SDL->createTextTexture("Press ESC to Quit", 500, 600);
     SDL->updateScreen();
 }
@@ -73,7 +74,7 @@ void coreGame::handleWelcomeEvent()
             }
         } else if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '4')
                 switch (keyName[0]) {
                     case '1':
                     {
@@ -94,6 +95,13 @@ void coreGame::handleWelcomeEvent()
                         playing = true;
                         quit = false;
                         selection = 2;
+                    }
+                        break;
+                    case '4':
+                    {
+                        playing = true;
+                        quit = false;
+                        selection = 3;
                     }
                         break;
                 }
