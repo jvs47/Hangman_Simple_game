@@ -6,34 +6,20 @@
 //
 
 #include "coreGame.hpp"
-#include <ctime>
-#include <unordered_map>
-#include <curses.h>
-
+#include "WindowHeader.h"
 #include "SkickSDL.hpp"
 #include "utility.hpp"
 #include "stringInput.hpp"
+
 using namespace std;
 
 coreGame::coreGame(SkickSDL* SkickSDL) : SDL(SkickSDL) {
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
-    {
-        printf("%s", Mix_GetError());
-    }
     playing = true;
     win = 0;
     loss = 0;
     score = 0;
     timePlayed = 0;
     selection = -1;
-    
-
-    startSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/gong.wav");
-    correctSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/phew.wav");
-    incorrectSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/rope-tighten.wav");
-    deadSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/dead.wav");
-    aliveSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/yeehaw.wav");
-    
 
 }
 
@@ -45,7 +31,6 @@ void coreGame::welcome()
         handleWelcomeEvent();
         highScore();
         howtoPlay();
-        options();
     }
 }
 
@@ -56,7 +41,6 @@ void coreGame::renderWelcome()
     SDL->createTextTexture("1. New game", 500, 300);
     SDL->createTextTexture("2. High score", 500, 350);
     SDL->createTextTexture("3. How to play", 500, 400);
-    SDL->createTextTexture("4. Options", 500, 450);
     SDL->createTextTexture("Press ESC to Quit", 500, 600);
     SDL->updateScreen();
 }
@@ -75,7 +59,7 @@ void coreGame::handleWelcomeEvent()
             }
         } else if (event.type == SDL_KEYUP) {
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '4')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '3')
                 switch (keyName[0]) {
                     case '1':
                     {
@@ -96,13 +80,6 @@ void coreGame::handleWelcomeEvent()
                         playing = true;
                         quit = false;
                         selection = 2;
-                    }
-                        break;
-                    case '4':
-                    {
-                        playing = true;
-                        quit = false;
-                        selection = 3;
                     }
                         break;
                 }
@@ -149,42 +126,12 @@ void coreGame::handleHighscore()
 {
     SDL_Event event;
     if (SDL_WaitEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-            playing = false;
-            quit = true;
-        } else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_ESCAPE) {
-            playing = false;
-        } else if (event.type == SDL_KEYUP && (event.key.keysym.sym == SDLK_RETURN ||event.key.keysym.sym == SDLK_RETURN2 ||event.key.keysym.sym == SDLK_KP_ENTER)) {
+        if (event.type == SDL_KEYUP && (event.key.keysym.sym == SDLK_RETURN ||event.key.keysym.sym == SDLK_RETURN2 ||event.key.keysym.sym == SDLK_KP_ENTER)) {
             playing = true;
             quit = false;
             selection = -1;
         }
     }
-}
-
-void coreGame::options()
-{
-    while(selection == 3 && playing && !quit)
-    {
-        renderOptions();
-        handleOptions();
-    }
-}
-void coreGame::renderOptions()
-{
-    SDL->createImageBackground("intro.png");
-    SDL->createTextTexture("__OPTIONS__", 500, 150);
-    SDL->createTextTexture("1. Music:", 500, 300);
-    SDL->createTextTexture("2. SFX:", 500, 350);
-    SDL->createTextTexture("3. Volume:", 500, 400);
-
-    SDL->createTextTexture("Press Enter to Return", 500, 600);
-    SDL->updateScreen();
-}
-
-void coreGame::handleOptions()
-{
-    
 }
 
 void coreGame::startGame()

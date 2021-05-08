@@ -5,16 +5,13 @@
 //  Created by John Vu on 05/04/2021.
 //
 
+#include "WindowHeader.h"
 #include "mode.hpp"
 #include "coreGame.hpp"
 #include "guesser.hpp"
 #include "SkickSDL.hpp"
 
 using namespace std;
-
-const int SCREEN_WIDTH = 950;           // SDL window width
-const int SCREEN_HEIGHT = 900;          // SDL window height
-const string WINDOW_TITLE = "Hangman";  // SDL window title
 
 int main(int argc, char* argv[]) {
     SkickSDL* SDL = new SkickSDL(WINDOW_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT); // initialize SkickSDL window

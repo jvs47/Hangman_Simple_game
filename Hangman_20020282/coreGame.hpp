@@ -11,8 +11,12 @@
 #include <stdio.h>
 #include <ctime>
 #include <string>
+#include <unordered_map>
 
+#include "WindowHeader.h"
 #include "SkickSDL.hpp"
+#include "utility.hpp"
+#include "stringInput.hpp"
 using namespace std;
 
 // Hangman Game class
@@ -56,9 +60,6 @@ public:
     void renderHighscore();             // render highScore window
     void handleHighscore();             // handle highScore event
     void howtoPlay();                   // how to Play game
-    void options();
-    void renderOptions();
-    void handleOptions();
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
@@ -85,13 +86,6 @@ public:
     void renderPlane(char, int);        // render flying plane
     void planeEvent(SDL_Event, bool&);  // handle event while the plane is flying
 
-private:
-
-    Mix_Chunk* startSFX;                //start SFX;
-    Mix_Chunk* correctSFX;
-    Mix_Chunk* incorrectSFX;
-    Mix_Chunk* deadSFX;
-    Mix_Chunk* aliveSFX;
 };
 
 #endif /* coreGame_hpp */

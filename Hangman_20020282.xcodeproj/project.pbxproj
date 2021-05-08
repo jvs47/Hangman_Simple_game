@@ -74,6 +74,7 @@
 		2DA479BA263D53720048E18B /* mode.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mode.cpp; sourceTree = "<group>"; };
 		2DA479BB263D53720048E18B /* mode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mode.hpp; sourceTree = "<group>"; };
 		2DA99A4326201E0300027B34 /* Dictionary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Dictionary; sourceTree = "<group>"; };
+		2DB4D11A2646D4200056090E /* WindowHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowHeader.h; sourceTree = "<group>"; };
 		2DC4E90C2627517B00480FED /* Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Font; sourceTree = "<group>"; };
 		2DED06A926254B320078ADF2 /* Score */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Score; sourceTree = "<group>"; };
 		2DF74621261B59CC00E2A4C8 /* Hangman_20020282 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Hangman_20020282; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +142,7 @@
 				2DA479B3263D3EA20048E18B /* util.cpp */,
 				2DA479A4263D3E3A0048E18B /* utility.cpp */,
 				2DA479A5263D3E3A0048E18B /* coreGame.hpp */,
+				2DB4D11A2646D4200056090E /* WindowHeader.h */,
 				2DA479B4263D3EA20048E18B /* guesser.hpp */,
 				2DA479BB263D53720048E18B /* mode.hpp */,
 				2DA479AA263D3E830048E18B /* painter.hpp */,

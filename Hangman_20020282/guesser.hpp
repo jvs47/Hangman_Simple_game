@@ -9,14 +9,15 @@
 #define guesser_hpp
 
 #include <stdio.h>
-#pragma once
-
 #include <string>
 #include <set>
 #include <vector>
 #include <map>
+
+#include "WindowHeader.h"
 #include "SkickSDL.hpp"
 using namespace std;
+
 class Guesser
 {
 private:
@@ -67,13 +68,6 @@ public:
     void renderGameOverSDL(int);        // render game over window
     void createGameOverSDL();           // initialize game over loop for rendering
 
-private:
-    Mix_Music* BackgroundMusic;         //bg music
-    Mix_Chunk* startSFX;                //start SFX;
-    Mix_Chunk* correctSFX;
-    Mix_Chunk* incorrectSFX;
-    Mix_Chunk* deadSFX;
-    Mix_Chunk* aliveSFX;
 };
 
 #endif /* guesser_hpp */

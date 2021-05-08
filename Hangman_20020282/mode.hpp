@@ -9,12 +9,14 @@
 #define mode_hpp
 
 #include <stdio.h>
+#include "WindowHeader.h"
 #include "SkickSDL.hpp"
+
 class gameMode
 {
 private:
     SkickSDL* SDL;
-    Mix_Music* BackgroundMusic;         //bg music
+
 public:
     int mode;
     bool running;
@@ -23,5 +25,9 @@ public:
     void renderMode();
     void handleMode();
     
+    void options();
+    void renderOptions();
+    void handleOptions();
+
 };
 #endif /* mode_hpp */

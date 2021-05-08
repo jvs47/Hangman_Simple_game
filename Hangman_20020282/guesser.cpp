@@ -95,11 +95,7 @@ Guesser::Guesser(SkickSDL* SkickSDL): SDL(SkickSDL)
 {
     playing = true;
     wordList = readWordListFromFile("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Dictionary/COM_player.txt");
-    startSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/gong.wav");
-    correctSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/phew.wav");
-    incorrectSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/rope-tighten.wav");
-    deadSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/dead.wav");
-    aliveSFX = Mix_LoadWAV("/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/SFX/yeehaw.wav");
+    
     
 }
 
