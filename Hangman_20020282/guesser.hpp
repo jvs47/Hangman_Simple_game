@@ -30,6 +30,7 @@ private:
     SkickSDL* SDL;
     bool quit;
 private:
+    // COM processing guess
     bool isGoodMask(char, const string&);
     void updateSecretWord(const string&);
     set<char> getRemainingChars(const set<char>&);
@@ -40,33 +41,42 @@ private:
     bool isSuitableWord(const string&, const string& , const set<char>&);
     vector<string> getSuitableWords(const vector<string>& , const string&, const set<char>& );
 public:
-    const int MAX_GUESSES = 6;
+    const int MAX_GUESSES = 6;      //Max bad guess
 public:
-    bool playing;
-    Guesser(SkickSDL*);
-    void newGame();
+    bool playing;                   //playing or not
+    Guesser(SkickSDL*);             //initialize Guesser
+    void newGame();                 //start game
+    
+    //word length handle
     void inputWordlength();
     void handleWordlength();
     void renderWordlength();
+    
+    //mask handle
     string getUserAnswer(char );
     void receiveHostAnswer(char , const string& );
     void getMask(string&, char);
     void handleMask(SDL_Event, string&, bool&, char);
+    
+    //process guess
     char getNextGuess();
-
     int getIncorrectGuess() const { return incorrectGuess; }
     set<char> getPreviousGuesses() const { return previousGuesses; }
     bool isStop() const { return stop; }
     string getSecretWord() const { return secretWord; }
     
+    // give up SDL
     void giveUp();
     void creatgiveUpSDL();
     void rendergiveUpSDL(int);
-    void gameOver();                    // initialize game over
+    
+    //game over SDL
+    void gameOver();
+    void renderGameOverSDL(int);
+    void createGameOverSDL();
+
     void checkContinue(SDL_Event);      // check if player want to continue playing game
-    void renderGameSDL(char);               // render playing game window
-    void renderGameOverSDL(int);        // render game over window
-    void createGameOverSDL();           // initialize game over loop for rendering
+    void renderGameSDL(char);           // render playing game window
 
 };
 

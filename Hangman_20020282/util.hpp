@@ -9,20 +9,22 @@
 #define util_hpp
 
 #include <stdio.h>
-#pragma once
-
-#include <vector>
 #include <string>
+#include <cstdlib>
+#include <fstream>
+#include <vector>
+#include <stdexcept>
 #include "SkickSDL.hpp"
 
+//Word utility
 std::string normalizeWord(const std::string);
 int generateRandomNumber(int, int);
 bool isCharInWord(char, std::string);
 std::vector<std::string> readWordListFromFile(const std::string&);
 bool isAllDash(const std::string&);
 bool isAllNotDash(const std::string&);
-void clearScreen();
 
+//input mask
 std::string maskInput(SkickSDL*);
 
 #endif /* util_hpp */

@@ -53,19 +53,25 @@ public:
     bool playing;                       // Game is playing or not
     coreGame(SkickSDL*);                // initialize Game
     void startGame();                   // initialize new Game
+    
     void welcome();                     // welcome
     void renderWelcome();               // render welcome window
     void handleWelcomeEvent();          // handle welcome event
+    
     void highScore();                   // highScore
     void renderHighscore();             // render highScore window
     void handleHighscore();             // handle highScore event
+    
     void howtoPlay();                   // how to Play game
+    
     void chooseCategory();              // Choose the category of random word
     void renderCategory();              // render category window
     void chooseCategoryEvent();         // handle choose category event
+    
     void chooseLevel();                 // Choose the level of random word
     void renderLevel();                 // render level window
     void chooseLevelEvent();            // handle choose level event
+    
     void initWord();                    // initialize word need guessing
     void hint();                        // get a suggestion
     void updateGuessedWord();           // update guessed word
@@ -75,14 +81,19 @@ public:
     void handleGuess();                 // handle guessing character
     void updateTime();                  // update playing time
     void badGuessed();                  // handle bad guessed
+    
     void gameOver();                    // initialize game over
     void timeplayed();                  // update timePlayed
+    
     void checkContinue(SDL_Event);      // check if player want to continue playing game
     void renderGameSDL();               // render playing game window
+    
     void renderGameOverSDL(int);        // render game over window
     void createGameOverSDL();           // initialize game over loop for rendering
+    
     bool is_highScore();                // check whether high score or not
     void nameHighScore();               // store player name high score
+    
     void renderPlane(char, int);        // render flying plane
     void planeEvent(SDL_Event, bool&);  // handle event while the plane is flying
 

@@ -6,11 +6,7 @@
 //
 
 #include "utility.hpp"
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <algorithm>
-#include <iomanip>
+
 using namespace std;
 
 string normalize(const string s)
@@ -187,3 +183,4 @@ string paddingStr(const playerScore &p, int &i)
     string _re = _i + ' ' +name + ' '+score + ' '+time + ' '+win + ' '+loss ;
     return _re;
 }
+

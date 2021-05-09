@@ -242,7 +242,7 @@ bool loadMedia(std::string heading)
     bool success = true;
 
     //Open the font
-    gFont = TTF_OpenFont( "/Users/jvs47/Downloads/Hangman-master/32_text_input_and_clipboard_handling/lazy.ttf", 28 );
+    gFont = TTF_OpenFont( "/Volumes/DATA/C++/Hangman_20020282/Hangman_20020282/Font/FiraCode-SemiBold.ttf", 28 );
     if( gFont == NULL )
     {
         printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );

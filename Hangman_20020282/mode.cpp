@@ -8,7 +8,6 @@
 #include "mode.hpp"
 #include "WindowHeader.h"
 
-
 Mix_Music* BackgroundMusic;
 Mix_Chunk* startSFX;
 Mix_Chunk* correctSFX;
@@ -49,13 +48,15 @@ void gameMode::modeGame()
         handleMode();
         options();
     }
+    if(mode == 1) gameMode1(SDL);
+    else if(mode == 0) gameMode2(SDL);
 }
 
 void gameMode::renderMode()
 {
     SDL->createImageBackground("intro.png");
     SDL->createTextTexture("WELCOME TO HANGMAN", 500, 150);
-    SDL->createTextTexture("Select game Mode:", 550, 300);
+    SDL->createTextTexture("Select game Mode:", 525, 300);
     SDL->createTextTexture("1. Man player", 550, 350);
     SDL->createTextTexture("2. COM player", 550, 400);
     SDL->createTextTexture("3. Options", 550, 450);
@@ -166,4 +167,61 @@ void gameMode::handleOptions()
                 }
         }
     }
+}
+
+void gameMode1(SkickSDL* SDL)
+{
+    coreGame* hangman = new coreGame(SDL);     // initialize game
+    while (hangman->playing) {                 // while player is playing game
+        hangman->startGame();                  // start a game
+        do {                                   // initialize game loop for rendering
+            hangman->renderGameSDL();          // render SDL game1
+            hangman->guessEvent();             // handle SDL keypress event
+            hangman->handleGuess();            // handle game based on event
+            hangman->updateTime();             // update playTime
+        } while (hangman->guessing());         // render game if the player is guessing
+        hangman->gameOver();                   // handle game over data and render SDL
+    }
+}
+
+void gameMode2(SkickSDL* SDL)
+{
+    Guesser* guesser = new Guesser(SDL);       // initialize ai
+    while(guesser->playing)                    //while com is playing
+    {
+        guesser->newGame();                    //start new game
+        char guess;
+        do {
+            guess = guesser->getNextGuess();   //handle come guess
+            guesser->renderGameSDL(guess);     //render SDL game
+            if (guess == 0) {
+                break;
+            }
+            do {
+                try {
+                    string mask = guesser->getUserAnswer(guess);    //input mask
+                    guesser->receiveHostAnswer(guess, mask);        //handle mask
+                    break;
+                } catch (invalid_argument e) {                      //handle exception
+                    cout << "Invalid mask, try again" << endl;
+                }
+            } while (true);
+            //guesser->renderGameSDL(guess);
+        } while (!guesser->isStop());   //render game if com still guessing
+        if(guess == 0)
+            guesser->giveUp();          //com give up
+        else
+            guesser->gameOver();        //gameOver
+    }
+}
+
+void gameMode::clean()
+{
+    SDL->~SkickSDL();
+    Mix_FreeMusic(BackgroundMusic);
+    Mix_FreeChunk(startSFX);
+    Mix_FreeChunk(correctSFX);
+    Mix_FreeChunk(incorrectSFX);
+    Mix_FreeChunk(deadSFX);
+    Mix_FreeChunk(aliveSFX);
 }

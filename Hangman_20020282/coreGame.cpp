@@ -6,10 +6,6 @@
 //
 
 #include "coreGame.hpp"
-#include "WindowHeader.h"
-#include "SkickSDL.hpp"
-#include "utility.hpp"
-#include "stringInput.hpp"
 
 using namespace std;
 
@@ -118,7 +114,7 @@ void coreGame::renderHighscore()
         string line = paddingStr(p1, i);
         SDL->createTextTexture(line, 150, 200+50*i);
     }
-    SDL->createTextTexture("Press Enter to go back, ESC to Quit", 180, 800);
+    SDL->createTextTexture("Press Enter to go Back", 270, 800);
     SDL->updateScreen();
 }
 
@@ -137,8 +133,6 @@ void coreGame::handleHighscore()
 void coreGame::startGame()
 {
     quit = false;
-    //system("clear");
-
     welcome();
     chooseCategory();
     chooseLevel();
@@ -154,7 +148,7 @@ void coreGame::startGame()
     time(&startTime);
     for (unsigned int i = 0; i < word.length(); i++)
     if (word[i] == ' ')
-        guessedWord[i] = ' ';
+        guessedWord[i] = ' '; 
     updateHint();
 }
 

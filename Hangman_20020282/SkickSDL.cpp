@@ -29,6 +29,7 @@ SkickSDL::SkickSDL(string title_, int width_, int height_) : title(title_), widt
     SDL_RenderSetLogicalSize(renderer, width, height);
 }
 
+
 SkickSDL::~SkickSDL() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
