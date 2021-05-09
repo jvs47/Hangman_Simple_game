@@ -269,11 +269,11 @@ void Guesser::handleMask(SDL_Event e, string &inputText, bool &exit, char guess)
     string com ="COM: I guess ";
     com += guess;
     com +=", ";
-    SDL->createTextTexture(com, 670, 150);
-    SDL->createTextTexture("enter mask", 670, 200);
+    SDL->createTextTexture(com, 670, 300);
+    SDL->createTextTexture("enter mask", 670, 350);
     string inpMask = "You: ";
     inpMask+=inputText.c_str();
-    SDL->createTextTexture(inpMask, 670, 250);
+    SDL->createTextTexture(inpMask, 670, 430);
     string guessedWord="";
     for(auto c: previousGuesses)
     {

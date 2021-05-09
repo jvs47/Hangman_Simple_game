@@ -12,8 +12,8 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
-const int SCREEN_WIDTH = 300;           // SDL window width
-const int SCREEN_HEIGHT = 200;          // SDL window height
+const int SCREEN_WIDTH = 350;           // SDL window width
+const int SCREEN_HEIGHT = 250;          // SDL window height
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
 
@@ -386,7 +386,7 @@ std::string stringInput(const char* title, std::string heading, std::string inpu
                 SDL_RenderClear( gRenderer );
 
                 //Render text textures
-                gPromptTextTexture.render( ( SCREEN_WIDTH - gPromptTextTexture.getWidth() ) / 2, ( SCREEN_HEIGHT - 5*gPromptTextTexture.getHeight() ) / 2 );
+                gPromptTextTexture.render( ( SCREEN_WIDTH - gPromptTextTexture.getWidth()) / 2, ( SCREEN_HEIGHT - 3*gPromptTextTexture.getHeight() ) / 2 );
                 gInputTextTexture.render( ( SCREEN_WIDTH - gInputTextTexture.getWidth() ) / 2,   (SCREEN_HEIGHT - gPromptTextTexture.getHeight())/2 );
 
                 //Update screen
