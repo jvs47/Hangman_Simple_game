@@ -42,7 +42,7 @@ void gameMode::modeGame()
         {
             Mix_PlayMusic(BackgroundMusic, -1);
         }
-    printf("volume is now : %d\n", Mix_VolumeMusic(-1));
+
     while(mode == -1 && running)
     {
         renderMode();
@@ -111,9 +111,15 @@ void gameMode::renderOptions()
 {
     SDL->createImageBackground("intro.png");
     SDL->createTextTexture("__OPTIONS__", 500, 150);
-    SDL->createTextTexture("1. Music:", 500, 300);
-    SDL->createTextTexture("2. Volume Up", 500, 350);
-    SDL->createTextTexture("3. Volume Down", 500, 400);
+    int temp1 = Mix_VolumeMusic(-1);
+    string status1 = ((temp1!=0)? "ON":"OFF");
+    SDL->createTextTexture("1. Music: " + status1, 500, 300);
+    int temp2 = Mix_Volume(-1,-1);
+    string status2 = ((temp2!=0)? "ON":"OFF");
+    SDL->createTextTexture("2. SFX: " + status2, 500, 350);
+    SDL->createTextTexture("3. Up", 500, 400);
+    SDL->createTextTexture("4. Down", 500, 450);
+    SDL->createTextTexture("Volume SFX: " + to_string(Mix_Volume(-1,-1)), 500, 500);
     SDL->createTextTexture("Press Enter to Return", 500, 600);
     SDL->updateScreen();
 }
@@ -126,21 +132,34 @@ void gameMode::handleOptions()
             running = true;
             mode = -1;
         } else if (event.type == SDL_KEYUP) {
+            previous_Music = Mix_VolumeMusic(-1);
+            previous_volume = Mix_Volume(-1,-1);
             string keyName = SDL_GetKeyName(event.key.keysym.sym);
-            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '2')
+            if (keyName.length() == 1 && keyName[0] >= '1' && keyName[0] <= '4')
                 switch (keyName[0]) {
                     case '1':
                     {
-                        if(Mix_PlayingMusic())
-                            int stopMusic = Mix_HaltMusic();
-                        else Mix_PlayMusic(BackgroundMusic, -1);
+                        if(previous_Music != 0)
+                            Mix_VolumeMusic(0);
+                        else Mix_VolumeMusic(128);
                     }
                         break;
                     case '2':
                     {
-                        if(Mix_Playing(-1))
-                            int stopSFX = Mix_HaltChannel(-1);
-                        else Mix_Playing(-1);
+                        if(previous_volume != 0)
+                            Mix_Volume(-1, 0);
+                        else
+                            Mix_Volume(-1, 128);
+                    }
+                        break;
+                    case '3':
+                    {
+                        Mix_Volume(-1, previous_volume+1);
+                    }
+                        break;
+                    case '4':
+                    {
+                        Mix_Volume(-1, previous_volume-1);
                     }
                         break;
 

@@ -16,6 +16,8 @@ class gameMode
 {
 private:
     SkickSDL* SDL;
+    int previous_Music;
+    int previous_volume;
 
 public:
     int mode;
@@ -28,6 +30,6 @@ public:
     void options();
     void renderOptions();
     void handleOptions();
-
+    
 };
 #endif /* mode_hpp */
