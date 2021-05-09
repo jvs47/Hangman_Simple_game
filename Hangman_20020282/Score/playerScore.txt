@@ -1,3 +1,4 @@
 PlayerName Score Times Win Loss                  Time_recored
       abcd     0     0   0    0      Wed Apr 14 23:40:13 2021
         an    10     1   0    1      Sun May  9 21:14:42 2021
+     khuat    50     2   2    0      Sun May  9 22:01:20 2021
