@@ -242,19 +242,19 @@ void coreGame::chooseLevelEvent() {
                     case '1':
                     {
                         level = 0;
-                        playTime = 90;
+                        playTime = 30;
                     }
                         break;
                     case '2':
                     {
                         level = 1;
-                        playTime = 150;
+                        playTime = 60;
                     }
                         break;
                     case '3':
                     {
                         level = 2;
-                        playTime = 200;
+                        playTime = 90;
                     }
                         break;
                 }
