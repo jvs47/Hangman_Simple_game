@@ -28,6 +28,6 @@ The font 'Fira Code Semi-Bold' is by Dieter Steffmann and is free to use.
 - SDL2_image-2.0.5
 - SDL2_ttf-2.0.15
 
-## Credit
-- Author: jvs47 [@jvs47](https://github.com/jvs47)
+## Author
+- jvs47 [@jvs47](https://github.com/jvs47)
 - Based on: Hangman(https://github.com/skick1234/Hangman) by [@skick1234](https://github.com/skick1234)
